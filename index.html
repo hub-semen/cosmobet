@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0b0c0e;color:#e8eaed;font-family:Poppins,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#00e1f0;text-decoration:none}a:hover{color:#7ff3fa}
+button{font-family:inherit;cursor:pointer}
+*{box-sizing:border-box}
+</style>
+</helmet>
+<div style="min-height:100vh;background:#0b0c0e">
+
+<header style="border-bottom:1px solid #1c1e22">
+  <div style="max-width:1110px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+    <div style="font-weight:900;font-size:22px;letter-spacing:-0.5px;color:#fff;display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;background:#00e1f0;transform:rotate(45deg)"></span>VODDS</div>
+    <div style="display:flex;align-items:center;gap:10px;font-size:11px">
+      <a href="#" style="color:#9aa0a8">Forgot Password?</a>
+      <button style="background:#e3174f;color:#fff;border:0;border-radius:6px;padding:7px 14px;font-weight:600;font-size:11px">Sign Up</button>
+      <button style="background:#00e1f0;color:#04181b;border:0;border-radius:6px;padding:7px 14px;font-weight:600;font-size:11px">Log In</button>
+      <span style="color:#cfd3d8;display:flex;align-items:center;gap:4px">EN <span style="font-size:8px">▼</span></span>
+    </div>
+  </div>
+  <nav style="border-top:1px solid #1c1e22">
+    <div style="max-width:1110px;margin:0 auto;padding:0 16px;display:flex;justify-content:space-between;gap:12px;overflow-x:auto">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="10">
+        <a href="#" style="position:relative;color:#e8eaed;font-size:12px;padding:16px 0;white-space:nowrap" style-hover="color:#00e1f0">{{ n.label }}<sc-if value="{{ n.isNew }}"><span style="position:absolute;top:2px;left:50%;transform:translateX(-50%);background:#e3174f;color:#fff;font-size:8px;padding:0 5px;border-radius:3px">New</span></sc-if></a>
+      </sc-for>
+    </div>
+  </nav>
+</header>
+
+<section style="max-width:1170px;margin:8px auto 0;padding:0 16px;position:relative">
+  <div style="position:relative;height:272px;border-radius:10px;overflow:hidden;background:radial-gradient(ellipse at 70% 40%,#0c3a44 0%,#07141a 50%,#050608 100%)">
+    <div style="position:absolute;right:0;top:0;bottom:0;width:48%;background:repeating-linear-gradient(135deg,rgba(0,225,240,.06) 0 10px,transparent 10px 20px);display:flex;align-items:center;justify-content:center;font-family:ui-monospace,monospace;font-size:11px;color:#5d8a90">{{ slide.art }}</div>
+    <div style="position:absolute;left:84px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:flex-start">
+      <div style="font-weight:900;font-style:italic;font-size:50px;line-height:1;color:#fff;letter-spacing:-1px;align-self:center">{{ slide.kicker }}</div>
+      <div style="font-weight:900;font-style:italic;font-size:52px;line-height:1.02;color:#fff;letter-spacing:-1px">{{ slide.title }}</div>
+      <div style="font-weight:800;font-style:italic;font-size:20px;color:#00e1f0;margin-top:6px;align-self:center">{{ slide.sub }}</div>
+    </div>
+  </div>
+  <button onClick="{{ prevSlide }}" style="position:absolute;left:38px;top:118px;width:38px;height:38px;border-radius:50%;background:#000;border:1px solid #3a3d42;color:#fff;font-size:16px">‹</button>
+  <button onClick="{{ nextSlide }}" style="position:absolute;right:38px;top:118px;width:38px;height:38px;border-radius:50%;background:#000;border:1px solid #3a3d42;color:#fff;font-size:16px">›</button>
+  <div style="display:flex;justify-content:center;gap:5px;margin-top:14px">
+    <sc-for list="{{ dots }}" as="d" hint-placeholder-count="15">
+      <button onClick="{{ d.go }}" style="height:8px;width:{{ d.w }};border-radius:4px;border:0;padding:0;background:{{ d.bg }};transition:all .25s"></button>
+    </sc-for>
+  </div>
+</section>
+
+<main style="max-width:938px;margin:0 auto;padding:56px 16px 0;display:flex;flex-direction:column;gap:40px">
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:14px">
+    <sc-for list="{{ casinoBlocks }}" as="b" hint-placeholder-count="2">
+      <div style="background:#16181c;border-radius:8px;padding:10px">
+        <div style="display:flex;align-items:center;gap:8px;padding:6px 2px 10px">
+          <span style="width:18px;height:18px;border-radius:4px;background:#00e1f0;opacity:.85"></span>
+          <span style="font-weight:600;font-size:14px;flex:1">{{ b.title }}</span>
+          <a href="#" style="font-size:9px;font-weight:600">View More</a>
+          <span style="color:#fff;font-size:16px;padding:0 10px">‹</span><span style="color:#fff;font-size:16px;padding:0 4px">›</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:98px 98px;gap:6px">
+          <sc-for list="{{ b.games }}" as="g" hint-placeholder-count="4">
+            <div style="grid-row:{{ g.row }};border-radius:6px;overflow:hidden;position:relative;background:{{ g.bg }}" style-hover="filter:brightness(1.15)">
+              <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 8px,transparent 8px 16px)"></div>
+              <div style="position:absolute;top:6px;left:6px;font-family:ui-monospace,monospace;font-size:8px;color:rgba(255,255,255,.45)">game art</div>
+              <div style="position:absolute;left:0;right:0;bottom:6px;text-align:center;font-weight:900;font-size:12px;line-height:1.1;text-transform:uppercase;color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.5);padding:0 4px">{{ g.name }}<div style="font-size:7px;font-weight:700;opacity:.85">{{ g.vendor }}</div></div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+
+  <div>
+    <div style="display:flex;align-items:center;gap:8px;padding:0 10px 18px">
+      <span style="font-weight:600;font-size:14px;flex:1">Mini Games</span>
+      <a href="#" style="font-size:9px;font-weight:600">View More</a><span style="font-size:11px;color:#6b7078">(13)</span>
+      <span style="color:#fff;font-size:16px;padding:0 10px">‹</span><span style="color:#fff;font-size:16px;padding:0 4px">›</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:30px;padding:0 10px">
+      <sc-for list="{{ miniGames }}" as="m" hint-placeholder-count="6">
+        <div style="aspect-ratio:120/132;border-radius:12px;position:relative;overflow:hidden;background:{{ m.bg }};box-shadow:0 10px 24px rgba(0,0,0,.5)" style-hover="transform:translateY(-3px)">
+          <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.07) 0 8px,transparent 8px 16px)"></div>
+          <div style="position:absolute;inset:auto 0 0 0;height:55%;background:linear-gradient(transparent,rgba(0,0,0,.6))"></div>
+          <div style="position:absolute;left:0;right:0;bottom:10px;text-align:center;font-weight:900;font-size:14px;line-height:1.1;text-transform:uppercase;color:#fff;padding:0 6px">{{ m.name }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div>
+    <div style="display:flex;align-items:center;gap:8px;padding:0 0 12px">
+      <span style="width:12px;height:12px;background:#00e1f0;border-radius:3px"></span>
+      <span style="font-size:11px;font-weight:500;flex:1">Top Events</span>
+      <a href="#" style="font-size:9px;font-weight:600">View More</a>
+      <span style="color:#fff;font-size:16px;padding:0 10px">‹</span><span style="color:#fff;font-size:16px;padding:0 4px">›</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px">
+      <sc-for list="{{ events }}" as="e" hint-placeholder-count="4">
+        <div style="border:1px solid #1f3a3d;border-radius:6px;padding:8px 8px 44px;background:linear-gradient(180deg,#0e2b2f,#0b0c0e 80%)">
+          <div style="text-align:center;font-size:8px;color:#00e1f0">{{ e.league }}</div>
+          <div style="text-align:center;font-size:10px;margin:6px 0 10px">{{ e.time }}</div>
+          <div style="display:grid;grid-template-columns:1fr auto 1fr;align-items:center;font-size:9px;font-weight:500;margin-bottom:10px">
+            <span>{{ e.home }}</span><span style="font-size:8px;color:#00e1f0;font-weight:700">VS</span><span style="text-align:right">{{ e.away }}</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4px">
+            <sc-for list="{{ e.odds }}" as="o">
+              <button style="background:#1a1c20;border:0;border-radius:4px;padding:4px 0;color:#e8eaed;font-size:10px;line-height:1.3" style-hover="background:#00e1f0;color:#04181b"><div style="font-size:8px;color:#00e1f0">{{ o.k }}</div>{{ o.v }}</button>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="background:#16181c;border-radius:8px;padding:10px">
+    <div style="display:flex;align-items:center;gap:8px;padding:4px 2px 10px">
+      <span style="width:18px;height:18px;border-radius:4px;background:#00e1f0;opacity:.85"></span>
+      <span style="font-weight:600;font-size:15px;flex:1">TOURNAMENTS</span>
+      <button style="background:#24272c;border:0;color:#e8eaed;font-size:10px;border-radius:5px;padding:4px 8px">View All</button>
+      <button style="background:transparent;border:0;color:#5a5e65;width:22px">‹</button>
+      <button style="background:#24272c;border:0;color:#fff;width:22px;height:22px;border-radius:5px">›</button>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:6px">
+      <sc-for list="{{ tournaments }}" as="t" hint-placeholder-count="2">
+        <div style="position:relative;height:226px;border-radius:6px;overflow:hidden;background:{{ t.bg }};display:grid;grid-template-columns:45% 55%">
+          <div style="background:repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 10px,transparent 10px 20px);display:flex;align-items:flex-end;padding:10px;font-family:ui-monospace,monospace;font-size:9px;color:rgba(255,255,255,.4)">{{ t.art }}</div>
+          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px">
+            <div style="font-size:15px;font-weight:500;line-height:1.4;max-width:200px">{{ t.title }}</div>
+            <div style="font-size:19px;font-weight:600;color:#00e1f0;margin:2px 0 8px">{{ t.prize }}</div>
+            <div style="display:flex;gap:6px">
+              <sc-for list="{{ t.cd }}" as="c" hint-placeholder-count="4">
+                <div style="background:rgba(0,0,0,.45);border-radius:4px;padding:2px 6px;min-width:36px"><div style="font-size:19px;font-weight:600;color:#00e1f0;line-height:1.2">{{ c.v }}</div><div style="font-size:9px;color:#cfd3d8">{{ c.l }}</div></div>
+              </sc-for>
+            </div>
+            <button style="margin-top:16px;background:#00e1f0;color:#04181b;border:0;border-radius:6px;padding:8px 22px;font-size:14px;font-weight:600" style-hover="background:#7ff3fa">More Info</button>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="background:#16181c;border-radius:8px;padding:10px">
+    <div style="display:flex;align-items:center;gap:8px;padding:4px 2px 10px">
+      <span style="width:18px;height:18px;border-radius:4px;background:#00e1f0;opacity:.85"></span>
+      <span style="font-weight:600;font-size:15px;flex:1">Promotions</span>
+      <button style="background:#24272c;border:0;color:#e8eaed;font-size:10px;border-radius:5px;padding:4px 8px">View All</button>
+      <button style="background:transparent;border:0;color:#5a5e65;width:22px">‹</button>
+      <button style="background:#24272c;border:0;color:#fff;width:22px;height:22px;border-radius:5px">›</button>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px">
+      <sc-for list="{{ promos }}" as="p" hint-placeholder-count="4">
+        <div>
+          <div style="position:relative;height:126px;border-radius:6px;overflow:hidden;background:{{ p.bg }}">
+            <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 8px,transparent 8px 16px)"></div>
+            <div style="position:absolute;left:0;right:0;bottom:10px;text-align:center;padding:0 4px">
+              <div style="font-weight:900;font-style:italic;font-size:15px;line-height:1.05;text-transform:uppercase;color:#fff">{{ p.title }}</div>
+              <div style="font-weight:700;font-style:italic;font-size:8px;text-transform:uppercase;color:#00e1f0;margin-top:3px">{{ p.sub }}</div>
+            </div>
+          </div>
+          <button style="margin:10px 0 6px 16px;background:#00e1f0;color:#04181b;border:0;border-radius:12px;padding:4px 12px;font-size:9px;font-weight:600">More info</button>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</main>
+
+<div style="background:#16181c;margin-top:40px">
+  <div style="max-width:938px;margin:0 auto;padding:30px 16px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px">
+    <sc-for list="{{ payments }}" as="x" hint-placeholder-count="11">
+      <span style="font-weight:800;font-size:{{ x.s }};color:#b7bcc3;font-style:italic;letter-spacing:-.3px">{{ x.n }}</span>
+    </sc-for>
+  </div>
+</div>
+
+<footer style="max-width:938px;margin:0 auto;padding:0 16px 60px">
+  <div style="padding:34px 0;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;border-bottom:1px solid #1c1e22">
+    <sc-for list="{{ providers }}" as="x" hint-placeholder-count="11">
+      <span style="font-weight:700;font-size:12px;color:#cfd3d8;text-transform:uppercase;letter-spacing:.5px">{{ x }}</span>
+    </sc-for>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:24px;padding:60px 0 50px">
+    <sc-for list="{{ footerCols }}" as="col" hint-placeholder-count="3">
+      <div>
+        <div style="font-size:11px;font-weight:500;margin-bottom:12px">{{ col.title }}</div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <sc-for list="{{ col.links }}" as="l"><a href="#" style="font-size:8px;color:#8b9098">{{ l }}</a></sc-for>
+        </div>
+      </div>
+    </sc-for>
+    <div style="display:flex;flex-direction:column;justify-content:space-between;gap:24px">
+      <div>
+        <div style="font-size:11px;font-weight:500;margin-bottom:12px">Contact Us</div>
+        <a href="#" style="font-size:8px;color:#8b9098">Live Chat</a>
+      </div>
+      <div style="display:flex;gap:10px">
+        <a href="#" style="width:36px;height:36px;border-radius:50%;background:#5865f2;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">Ds</a>
+        <a href="#" style="width:36px;height:36px;border-radius:50%;background:#2aa3df;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">Tg</a>
+        <a href="#" style="width:36px;height:36px;border-radius:50%;background:#fff;color:#000;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">X</a>
+        <a href="#" style="width:36px;height:36px;border-radius:10px;background:#d6246e;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">Ig</a>
+      </div>
+    </div>
+  </div>
+  <div style="border-top:1px solid #2a2d32;border-bottom:1px solid #2a2d32;padding:14px 0;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap">
+    <span style="width:24px;height:24px;border-radius:50%;border:2px solid #e3174f;color:#e3174f;font-size:8px;font-weight:700;display:flex;align-items:center;justify-content:center">18+</span>
+    <span style="width:22px;height:24px;border-radius:4px 4px 11px 11px;border:2px solid #fff;color:#fff;font-size:10px;display:flex;align-items:center;justify-content:center">✓</span>
+    <span style="font-size:9px;font-weight:500">Attention! It is gambling advertising. Gambling is not suitable for solving financial problems. Please read terms and conditions and play responsibly.</span>
+  </div>
+  <p style="text-align:center;font-size:12px;line-height:1.5;color:#b7bcc3;margin:30px 0;text-wrap:pretty">VODDS is operated by Santeda International B.V., a company incorporated under the laws of Curaçao with Company Number 151296 and is licensed by the Curacao Gaming Authority to offer games of chance under license number OGL/2024/1798/1048 in accordance with the National Ordinance on Offshore Games of Hazard (Landsverordening buitengaatse hazardspelen, P.B. 1993, no. 63) (NOOGH).<br>Santeda International Limited, with registered office at Poreias, 2 3011, Limassol, Cyprus, acts as a payment agent of the license holder and parent company - Santeda International BV.</p>
+  <div style="display:flex;justify-content:center"><div style="width:120px;height:48px;border:1px dashed #3a3d42;border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:ui-monospace,monospace;font-size:8px;color:#6b7078">CGA seal</div></div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;oddsFormat&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Decimal&quot;,&quot;American&quot;,&quot;Fractional&quot;],&quot;default&quot;:&quot;Decimal&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;heroAutoplay&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { slide: 3, now: Date.now() };
+  componentDidMount() {
+    this.t = setInterval(() => this.setState({ now: Date.now() }), 1000);
+    this.h = setInterval(() => { if (this.props.heroAutoplay ?? true) this.go(1); }, 5000);
+  }
+  componentWillUnmount() { clearInterval(this.t); clearInterval(this.h); }
+  go(d) { this.setState(s => ({ slide: (s.slide + d + 15) % 15 })); }
+  fmtOdd(v) {
+    const f = this.props.oddsFormat ?? 'Decimal';
+    if (f === 'American') return v >= 2 ? '+' + Math.round((v - 1) * 100) : '-' + Math.round(100 / (v - 1));
+    if (f === 'Fractional') {
+      const x = v - 1; let best = [1, 1], err = 9;
+      for (let d = 1; d <= 20; d++) { const n = Math.round(x * d), e = Math.abs(n / d - x); if (e < err - 1e-9) { err = e; best = [n, d]; } }
+      return best[0] + '/' + best[1];
+    }
+    return v.toFixed(2).replace(/0$/, '').replace(/\.$/, '');
+  }
+  cd(end) {
+    let s = Math.max(0, Math.floor((end - this.state.now) / 1000));
+    const d = Math.floor(s / 86400); s %= 86400;
+    const h = Math.floor(s / 3600); s %= 3600;
+    const p = n => String(n).padStart(2, '0');
+    return [{ v: d, l: 'DD' }, { v: p(h), l: 'HH' }, { v: p(Math.floor(s / 60)), l: 'MM' }, { v: p(s % 60), l: 'SS' }];
+  }
+  renderVals() {
+    const slides = [
+      { kicker: '200%', title: 'EXPRESS BET', sub: 'UP TO $200 FREE BET DAILY', art: 'hero art · trophies + prizes' },
+      { kicker: '400%', title: 'WELCOME BOOST', sub: 'UP TO 1000 FREE SPINS', art: 'hero art · casino' },
+      { kicker: '110', title: 'FREE BETS', sub: 'NATIONS LEAGUE QUEST', art: 'hero art · stadium' }
+    ];
+    const base = this._base || (this._base = Date.now());
+    const pal = ['#8a2a1c', '#1f6fb0', '#a4702a', '#c85a14', '#6a2f7a', '#7a3b12', '#4b2a8a', '#b01a4a'];
+    const ev = [
+      ['Sweden', 'Romania', '25.09 · 18:45', 'B', [1.42, 4.67, 6.6]],
+      ['Montenegro', 'Cyprus', '25.09 · 18:45', 'C', [1.74, 3.48, 4.81]],
+      ['Slovenia', 'Scotland', '26.09 · 13:00', 'B', [2.49, 3.14, 2.85]],
+      ['San Marino', 'Finland', '26.09 · 16:00', 'C', [29.3, 10.04, 1.07]]
+    ];
+    return {
+      nav: ['Sports', 'Live', 'E-sports', 'Live Casino', 'Casino', 'Mini Games', 'Virtual sport', 'Racing', 'Tournaments', 'Promotions'].map(l => ({ label: l, isNew: l === 'Tournaments' })),
+      slide: slides[this.state.slide % 3],
+      prevSlide: () => this.go(-1), nextSlide: () => this.go(1),
+      dots: Array.from({ length: 15 }, (_, i) => ({ w: i === this.state.slide ? '24px' : '8px', bg: i === this.state.slide ? '#f5c400' : '#fff', go: () => this.setState({ slide: i }) })),
+      casinoBlocks: [
+        { title: 'Casino', games: [
+          { name: 'Aztec Magic Megaways', vendor: '', row: 'span 2', bg: pal[0] },
+          { name: 'Chicken Race', vendor: 'Chicken Race', row: 'auto', bg: pal[1] },
+          { name: 'Book of Pyramids', vendor: 'BGaming', row: 'span 2', bg: pal[2] },
+          { name: 'Fortune Jaguar', vendor: 'Thunderspin', row: 'auto', bg: pal[3] }] },
+        { title: 'Live Casino', games: [
+          { name: 'Gravity Sic Bo', vendor: 'Ironic21', row: 'span 2', bg: pal[4] },
+          { name: 'Lucky7', vendor: 'Bet Games', row: 'auto', bg: pal[5] },
+          { name: 'Live Roulette European', vendor: 'Platipus', row: 'span 2', bg: pal[7] },
+          { name: 'Blackjack 8', vendor: 'Lucky Streak', row: 'auto', bg: pal[6] }] }
+      ],
+      miniGames: [['Hilo Joker', '#9aa3b5'], ['Roulette', '#4b2aa0'], ['Minesweeper XY', '#1d5c8a'], ['Sweet Keno', '#3f9a6a'], ['Aviamasters', '#2b74c9'], ['Magic Wheel', '#6a2a8a']].map(([name, bg]) => ({ name, bg })),
+      events: ev.map(([home, away, time, lg, o]) => ({ home, away, time, league: 'UEFA Nations League. League ' + lg + '.', odds: ['1', 'X', '2'].map((k, i) => ({ k, v: this.fmtOdd(o[i]) })) })),
+      tournaments: [
+        { title: 'Autumn weekly leaderboard', prize: '520000', art: 'tournament art · witch', bg: 'linear-gradient(90deg,#1a1830,#0e3a3e)', cd: this.cd(base + ((3 * 24 + 10) * 60 + 18) * 60000 + 49000) },
+        { title: 'European Cups', prize: 'Physical Gifts +10 000', art: 'tournament art · trophies', bg: 'linear-gradient(90deg,#082a30,#0e3a3e)', cd: this.cd(base + ((127 * 24 + 10) * 60 + 18) * 60000 + 49000) }
+      ],
+      promos: [
+        { title: 'Cash Prizes & Physical Gifts', sub: '+200% express odds leaderboard', bg: '#1b2a26' },
+        { title: 'Nations League Quest', sub: '5 days, 110 in free bets', bg: '#1a2234' },
+        { title: 'Laver Cup', sub: 'Earn up to 500 free spins', bg: '#20283a' },
+        { title: 'Up to 1000 Freespins', sub: '+ 400% welcome boost!', bg: '#1a1f36' }
+      ],
+      payments: [['VISA', '20px'], ['mastercard', '12px'], ['Skrill', '19px'], ['NETELLER', '14px'], ['paysafecard', '14px'], ['bitcoin', '16px'], ['TRON TRX', '9px'], ['Litecoin LTC', '9px'], ['Ethereum ETH', '9px'], ['Dogecoin DOGE', '9px']].map(([n, s]) => ({ n, s })),
+      providers: ['bgaming', 'Evoplay', 'Habanero', 'BGaming', 'Gameart', 'Thunderspin', 'endorphina', 'Slotopia', 'Playson'],
+      footerCols: [
+        { title: 'Our Products', links: ['Sports Betting', 'Virtual Sports', 'E-Sport', 'Mini Games', 'Casino', 'Live Casino', 'Accounts, Payouts & Bonuses'] },
+        { title: 'Information', links: ['Company Details', 'Responsible Gaming', 'Privacy Policy', 'Affiliate', 'Sportsbook Terms', 'Affiliate Program T&C'] },
+        { title: 'Help', links: ['Terms & Conditions', 'F.A.Q (Frequently Asked Questions)', 'KYC/AML Policy', 'Refund Policy', 'Dispute Resolution', 'Fairness & RNG Testing Methods', 'Self Exclusion'] }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
