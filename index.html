@@ -142,9 +142,13 @@ button{font-family:inherit;cursor:pointer}
         <div style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:98px 98px;gap:6px">
           <sc-for list="{{ b.games }}" as="g" hint-placeholder-count="4">
             <div style="grid-row:{{ g.row }};border-radius:6px;overflow:hidden;position:relative;background:{{ g.bg }}" style-hover="filter:brightness(1.15)">
-              <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 8px,transparent 8px 16px)"></div>
-              <div style="position:absolute;top:6px;left:6px;font-family:ui-monospace,monospace;font-size:8px;color:rgba(255,255,255,.45)">game art</div>
-              <div style="position:absolute;left:0;right:0;bottom:6px;text-align:center;font-weight:900;font-size:12px;line-height:1.1;text-transform:uppercase;color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.5);padding:0 4px">{{ g.name }}<div style="font-size:7px;font-weight:700;opacity:.85">{{ g.vendor }}</div></div>
+              <sc-if value="{{ g.img }}"><img src="{{ g.img }}" alt="{{ g.alt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{ g.pos }};display:block"></sc-if>
+              <sc-if value="{{ g.placeholder }}">
+                <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 8px,transparent 8px 16px)"></div>
+                <div style="position:absolute;top:6px;left:6px;font-family:ui-monospace,monospace;font-size:8px;color:rgba(255,255,255,.45)">game art</div>
+              </sc-if>
+              <sc-if value="{{ g.shade }}"><div style="position:absolute;inset:auto 0 0 0;height:60%;background:linear-gradient(transparent,rgba(0,0,0,.75))"></div></sc-if>
+              <div style="display:{{ g.label }};position:absolute;left:0;right:0;bottom:6px;text-align:center;font-weight:900;font-size:12px;line-height:1.1;text-transform:uppercase;color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.5);padding:0 4px">{{ g.name }}<div style="font-size:7px;font-weight:700;opacity:.85">{{ g.vendor }}</div></div>
             </div>
           </sc-for>
         </div>
@@ -481,18 +485,19 @@ class Component extends DCLogic {
       slides: slides.map((x, i) => ({ ...x, op: i === this.state.slide ? 1 : 0, pe: i === this.state.slide ? 'auto' : 'none', loading: i === 0 ? 'eager' : 'lazy' })),
       prevSlide: () => this.go(-1), nextSlide: () => this.go(1),
       dots: slides.map((_, i) => ({ w: i === this.state.slide ? '24px' : '8px', bg: i === this.state.slide ? '#f5c400' : '#fff', go: () => this.setState({ slide: i }) })),
-      casinoBlocks: [
+      casinoBlocks: ([
         { title: 'Casino', games: [
-          { name: 'Aztec Magic Megaways', vendor: '', row: 'span 2', bg: pal[0] },
-          { name: 'Chicken Race', vendor: 'Chicken Race', row: 'auto', bg: pal[1] },
-          { name: 'Book of Pyramids', vendor: 'BGaming', row: 'span 2', bg: pal[2] },
-          { name: 'Fortune Jaguar', vendor: 'Thunderspin', row: 'auto', bg: pal[3] }] },
+          // Tall tiles show the full cover (title baked in); short tiles crop to the top and overlay the title.
+          { name: 'Astro Rumble', vendor: 'Hacksaw Gaming', row: 'span 2', bg: '#1b1530', img: 'uploads/games/astro-rumble.webp' },
+          { name: 'Age of Seth', vendor: 'Hacksaw Gaming', row: 'auto', bg: '#0f2a2c', img: 'uploads/games/age-of-seth.webp', short: true },
+          { name: 'Godly Gains', vendor: 'Hacksaw Gaming', row: 'span 2', bg: '#3a2a14', img: 'uploads/games/godly-gains.webp' },
+          { name: 'Culinary Clash', vendor: 'Hacksaw Gaming', row: 'auto', bg: '#8a2a1c', img: 'uploads/games/culinary-clash.webp', short: true }] },
         { title: 'Live Casino', games: [
           { name: 'Gravity Sic Bo', vendor: 'Ironic21', row: 'span 2', bg: pal[4] },
           { name: 'Lucky7', vendor: 'Bet Games', row: 'auto', bg: pal[5] },
           { name: 'Live Roulette European', vendor: 'Platipus', row: 'span 2', bg: pal[7] },
           { name: 'Blackjack 8', vendor: 'Lucky Streak', row: 'auto', bg: pal[6] }] }
-      ],
+      ]).map(blk => ({ ...blk, games: blk.games.map(g => ({ ...g, alt: g.name + ' — ' + g.vendor, pos: g.short ? 'center 12%' : 'center', placeholder: !g.img, shade: !!g.short, label: !g.img || g.short ? 'block' : 'none' })) })),
       miniGames: [['Hilo Joker', '#9aa3b5'], ['Roulette', '#4b2aa0'], ['Minesweeper XY', '#1d5c8a'], ['Sweet Keno', '#3f9a6a'], ['Aviamasters', '#2b74c9'], ['Magic Wheel', '#6a2a8a']].map(([name, bg]) => ({ name, bg })),
       events: ev.map(([home, away, time, lg, o]) => ({ home, away, time, league: 'UEFA Nations League. League ' + lg + '.', odds: ['1', 'X', '2'].map((k, i) => ({ k, v: this.fmtOdd(o[i]) })) })),
       tournaments: [
