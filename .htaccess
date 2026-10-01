@@ -1,6 +1,0 @@
-# 307 redirects for CTA links (Apache). NE keeps the "#" fragment unescaped.
-RewriteEngine On
-RewriteRule ^registration/?$ https://vodds.com/#register [R=307,NE,L]
-RewriteRule ^login/?$ https://vodds.com/#login [R=307,NE,L]
-RewriteRule ^promotions/?$ https://vodds.com/promotions/ [R=307,NE,L]
-RewriteRule ^casino/?$ https://vodds.com/online-casino/ [R=307,NE,L]
