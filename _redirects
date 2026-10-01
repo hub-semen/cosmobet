@@ -1,9 +1,9 @@
 # Cloudflare Pages: 307 redirects for CTA links
-/registration   https://vodds.com/?utm_source=Cloudbet-fr#register                307
-/registration/  https://vodds.com/?utm_source=Cloudbet-fr#register                307
-/login          https://vodds.com/?utm_source=Cloudbet-fr#login                   307
-/login/         https://vodds.com/?utm_source=Cloudbet-fr#login                   307
-/promotions     https://vodds.com/promotions/?utm_source=Cloudbet-fr              307
-/promotions/    https://vodds.com/promotions/?utm_source=Cloudbet-fr              307
-/casino         https://vodds.com/online-casino/?utm_source=Cloudbet-fr           307
-/casino/        https://vodds.com/online-casino/?utm_source=Cloudbet-fr           307
+/registration   https://vodds.com/?utm_source=Cosmobet-fr#register                307
+/registration/  https://vodds.com/?utm_source=Cosmobet-fr#register                307
+/login          https://vodds.com/?utm_source=Cosmobet-fr#login                   307
+/login/         https://vodds.com/?utm_source=Cosmobet-fr#login                   307
+/promotions     https://vodds.com/promotions/?utm_source=Cosmobet-fr              307
+/promotions/    https://vodds.com/promotions/?utm_source=Cosmobet-fr              307
+/casino         https://vodds.com/online-casino/?utm_source=Cosmobet-fr           307
+/casino/        https://vodds.com/online-casino/?utm_source=Cosmobet-fr           307
