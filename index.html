@@ -61,6 +61,11 @@ html{scroll-behavior:smooth}
 .seo-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
 .seo-btns a{background:#24272c;color:#fff;border-radius:6px;padding:9px 18px;font-size:13px;font-weight:600}
 .seo-btns a:hover{background:#00e1f0;color:#04181b}
+.cf-label{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:500;color:#cfd3d8}
+.cf-input{background:#0f1012;border:1px solid #2a2d32;border-radius:6px;padding:10px 12px;color:#fff;font:inherit;font-size:14px;outline:none}
+.cf-input:focus{border-color:#00e1f0;box-shadow:0 0 0 2px rgba(0,225,240,.2)}
+.cf-check{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.45;color:#cfd3d8;cursor:pointer}
+.cf-check input{margin:2px 0 0;width:16px;height:16px;flex:none;accent-color:#00e1f0}
 @media (max-width:900px){.pay-strip{flex-wrap:wrap!important;justify-content:center!important;gap:12px 22px!important}}
 @media (max-width:600px){.hero-nav{width:26px!important;height:26px!important;font-size:13px!important}.hero-prev{left:6px!important}.hero-next{right:6px!important}}
 @media (max-width:600px){.seo-card{padding:18px 16px}.seo h2{font-size:19px}.seo-table td:first-child{white-space:normal}}
@@ -414,7 +419,7 @@ html{scroll-behavior:smooth}
     <div style="display:flex;flex-direction:column;justify-content:space-between;gap:24px">
       <div>
         <div style="font-size:13px;font-weight:600;margin-bottom:12px;color:#fff">Nous contacter</div>
-        <a href="#support" style="font-size:12px;color:#8b9098" style-hover="color:#00e1f0">Chat en direct</a>
+        <button type="button" onClick="{{ openContact }}" style="background:none;border:0;padding:0;font-size:12px;color:#8b9098;text-align:left" style-hover="color:#00e1f0">Chat en direct</button>
       </div>
       <div style="display:flex;gap:10px">
         <a href="#" style="width:36px;height:36px;border-radius:50%;background:#5865f2;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">Ds</a>
@@ -432,16 +437,45 @@ html{scroll-behavior:smooth}
   <p style="text-align:center;font-size:12px;line-height:1.5;color:#b7bcc3;margin:30px 0;text-wrap:pretty">Cosmobet is operated by Santeda International B.V., a company incorporated under the laws of Curaçao with Company Number 151296 and is licensed by the Curacao Gaming Authority to offer games of chance under license number OGL/2024/1798/1048 in accordance with the National Ordinance on Offshore Games of Hazard (Landsverordening buitengaatse hazardspelen, P.B. 1993, no. 63) (NOOGH).<br>Santeda International Limited, with registered office at Poreias, 2 3011, Limassol, Cyprus, acts as a payment agent of the license holder and parent company - Santeda International BV.</p>
   <div style="display:flex;justify-content:center"><div style="width:120px;height:48px;border:1px dashed #3a3d42;border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:ui-monospace,monospace;font-size:8px;color:#6b7078">CGA seal</div></div>
 </footer>
+<sc-if value="{{ contactOpen }}">
+  <div onClick="{{ closeContact }}" style="position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;padding:16px">
+    <div role="dialog" aria-modal="true" aria-labelledby="cf-title" onClick="{{ stopClick }}" style="position:relative;width:100%;max-width:440px;max-height:calc(100vh - 32px);overflow-y:auto;background:#16181c;border:1px solid #1f3a3d;border-radius:12px;padding:26px 24px 24px;box-shadow:0 24px 60px rgba(0,0,0,.6)">
+      <button type="button" onClick="{{ closeContact }}" aria-label="Fermer" style="position:absolute;top:10px;right:12px;background:none;border:0;color:#9aa0a8;font-size:24px;line-height:1;padding:4px" style-hover="color:#fff">×</button>
+      <sc-if value="{{ contactForm }}">
+        <h2 id="cf-title" style="margin:0 0 6px;font-size:20px;font-weight:700;color:#fff">Nous contacter</h2>
+        <p style="margin:0 0 18px;font-size:13px;color:#9aa0a8">Notre équipe vous répondra par e-mail dans les plus brefs délais.</p>
+        <form onSubmit="{{ submitContact }}" style="display:flex;flex-direction:column;gap:14px">
+          <label class="cf-label">Nom<input class="cf-input" name="name" type="text" autocomplete="name" required="required"></label>
+          <label class="cf-label">E-mail<input class="cf-input" name="email" type="email" autocomplete="email" required="required"></label>
+          <label class="cf-label">Votre question<textarea class="cf-input" name="message" rows="4" required="required" style="resize:vertical"></textarea></label>
+          <label class="cf-check"><input type="checkbox" name="age" required="required"><span>Je confirme avoir 18 ans ou plus.</span></label>
+          <label class="cf-check"><input type="checkbox" name="consent" required="required"><span>J'accepte le traitement de mes données personnelles.</span></label>
+          <button type="submit" style="margin-top:4px;background:#00e1f0;color:#04181b;border:0;border-radius:6px;padding:11px 22px;font-size:14px;font-weight:600" style-hover="background:#7ff3fa">Envoyer</button>
+        </form>
+      </sc-if>
+      <sc-if value="{{ contactSent }}">
+        <div style="text-align:center;padding:18px 0 6px">
+          <div style="width:52px;height:52px;margin:0 auto 14px;border-radius:50%;background:#00e1f0;color:#04181b;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:700">✓</div>
+          <h2 id="cf-title" style="margin:0 0 8px;font-size:20px;font-weight:700;color:#fff">Merci !</h2>
+          <p style="margin:0 0 20px;font-size:14px;color:#cfd3d8">Votre message a bien été envoyé. Nous vous répondrons par e-mail.</p>
+          <button type="button" onClick="{{ closeContact }}" style="background:#24272c;color:#fff;border:0;border-radius:6px;padding:9px 22px;font-size:14px;font-weight:600">Fermer</button>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</sc-if>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;oddsFormat&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Decimal&quot;,&quot;American&quot;,&quot;Fractional&quot;],&quot;default&quot;:&quot;Decimal&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;heroAutoplay&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
 class Component extends DCLogic {
-  state = { slide: 0, now: Date.now(), pages: {} };
+  state = { slide: 0, now: Date.now(), pages: {}, contactOpen: false, contactSent: false };
   componentDidMount() {
     this.t = setInterval(() => this.setState({ now: Date.now() }), 1000);
     this.h = setInterval(() => { if (this.props.heroAutoplay ?? true) this.go(1); }, 5000);
+    this.onKey = e => { if (e.key === 'Escape' && this.state.contactOpen) this.setState({ contactOpen: false }); };
+    document.addEventListener('keydown', this.onKey);
   }
-  componentWillUnmount() { clearInterval(this.t); clearInterval(this.h); }
+  componentWillUnmount() { clearInterval(this.t); clearInterval(this.h); document.removeEventListener('keydown', this.onKey); }
   go(d) { this.setState(s => ({ slide: (s.slide + d + 5) % 5 })); }
   // Casino blocks show 4 games per page: tall, short, tall, short (3-column grid, 2 rows).
   casinoPage(blk) {
@@ -486,10 +520,18 @@ class Component extends DCLogic {
       ['San Marino', 'Finland', '26.09 · 16:00', 'C', [29.3, 10.04, 1.07]]
     ];
     return {
+      // Contact popup (no backend yet: submitting only shows the confirmation).
+      contactOpen: this.state.contactOpen,
+      contactForm: !this.state.contactSent,
+      contactSent: this.state.contactSent,
+      openContact: () => this.setState({ contactOpen: true, contactSent: false }),
+      closeContact: () => this.setState({ contactOpen: false }),
+      stopClick: e => e.stopPropagation(),
+      submitContact: e => { e.preventDefault(); this.setState({ contactSent: true }); },
       nav: [
         ['Paris sportifs', '#paris-sportifs'], ['Top matchs', '#top-matchs'], ['Casino', '#casino'], ['Casino en direct', '#casino-en-direct'],
         ['Mini-jeux', '#mini-jeux'], ['Tournois', '#tournois'], ['Promotions', '#promotions'], ['Bonus', '#bienvenue'],
-        ['Paiements', '#paiements'], ['FAQ', '#faq']
+        ['Paiements', '#paiements'], ['Support', '#support']
       ].map(([label, href]) => ({ label, href, isNew: href === '#tournois' })),
       slides: slides.map((x, i) => ({ ...x, op: i === this.state.slide ? 1 : 0, pe: i === this.state.slide ? 'auto' : 'none', loading: i === 0 ? 'eager' : 'lazy' })),
       prevSlide: () => this.go(-1), nextSlide: () => this.go(1),
