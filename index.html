@@ -59,6 +59,7 @@ button{font-family:inherit;cursor:pointer}
 .seo-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
 .seo-btns a{background:#24272c;color:#fff;border-radius:6px;padding:9px 18px;font-size:13px;font-weight:600}
 .seo-btns a:hover{background:#00e1f0;color:#04181b}
+@media (max-width:600px){.hero-nav{width:26px!important;height:26px!important;font-size:13px!important}.hero-prev{left:6px!important}.hero-next{right:6px!important}}
 @media (max-width:600px){.seo-card{padding:18px 16px}.seo h2{font-size:19px}.seo-table td:first-child{white-space:normal}}
 </style>
 </helmet>
@@ -83,19 +84,18 @@ button{font-family:inherit;cursor:pointer}
   </nav>
 </header>
 
-<section style="max-width:1170px;margin:8px auto 0;padding:0 16px;position:relative">
-  <div style="position:relative;height:272px;border-radius:10px;overflow:hidden;background:radial-gradient(ellipse at 70% 40%,#0c3a44 0%,#07141a 50%,#050608 100%)">
-    <div style="position:absolute;right:0;top:0;bottom:0;width:48%;background:repeating-linear-gradient(135deg,rgba(0,225,240,.06) 0 10px,transparent 10px 20px);display:flex;align-items:center;justify-content:center;font-family:ui-monospace,monospace;font-size:11px;color:#5d8a90">{{ slide.art }}</div>
-    <div style="position:absolute;left:84px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:flex-start">
-      <div style="font-weight:900;font-style:italic;font-size:50px;line-height:1;color:#fff;letter-spacing:-1px;align-self:center">{{ slide.kicker }}</div>
-      <div style="font-weight:900;font-style:italic;font-size:52px;line-height:1.02;color:#fff;letter-spacing:-1px">{{ slide.title }}</div>
-      <div style="font-weight:800;font-style:italic;font-size:20px;color:#00e1f0;margin-top:6px;align-self:center">{{ slide.sub }}</div>
+<section style="max-width:1170px;margin:8px auto 0;padding:0 16px">
+  <div style="position:relative">
+    <div style="position:relative;aspect-ratio:1991/500;border-radius:10px;overflow:hidden;background:#050608">
+      <sc-for list="{{ slides }}" as="s" hint-placeholder-count="5">
+        <a href="#" style="position:absolute;inset:0;opacity:{{ s.op }};pointer-events:{{ s.pe }};transition:opacity .5s"><img src="{{ s.src }}" alt="{{ s.alt }}" loading="{{ s.loading }}" style="width:100%;height:100%;object-fit:cover;display:block"></a>
+      </sc-for>
     </div>
+    <button class="hero-nav hero-prev" onClick="{{ prevSlide }}" aria-label="Précédent" style="position:absolute;left:22px;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;background:rgba(0,0,0,.7);border:1px solid #3a3d42;color:#fff;font-size:16px">‹</button>
+    <button class="hero-nav hero-next" onClick="{{ nextSlide }}" aria-label="Suivant" style="position:absolute;right:22px;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;background:rgba(0,0,0,.7);border:1px solid #3a3d42;color:#fff;font-size:16px">›</button>
   </div>
-  <button onClick="{{ prevSlide }}" style="position:absolute;left:38px;top:118px;width:38px;height:38px;border-radius:50%;background:#000;border:1px solid #3a3d42;color:#fff;font-size:16px">‹</button>
-  <button onClick="{{ nextSlide }}" style="position:absolute;right:38px;top:118px;width:38px;height:38px;border-radius:50%;background:#000;border:1px solid #3a3d42;color:#fff;font-size:16px">›</button>
   <div style="display:flex;justify-content:center;gap:5px;margin-top:14px">
-    <sc-for list="{{ dots }}" as="d" hint-placeholder-count="15">
+    <sc-for list="{{ dots }}" as="d" hint-placeholder-count="5">
       <button onClick="{{ d.go }}" style="height:8px;width:{{ d.w }};border-radius:4px;border:0;padding:0;background:{{ d.bg }};transition:all .25s"></button>
     </sc-for>
   </div>
@@ -436,13 +436,13 @@ button{font-family:inherit;cursor:pointer}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;oddsFormat&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Decimal&quot;,&quot;American&quot;,&quot;Fractional&quot;],&quot;default&quot;:&quot;Decimal&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;heroAutoplay&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
 class Component extends DCLogic {
-  state = { slide: 3, now: Date.now() };
+  state = { slide: 0, now: Date.now() };
   componentDidMount() {
     this.t = setInterval(() => this.setState({ now: Date.now() }), 1000);
     this.h = setInterval(() => { if (this.props.heroAutoplay ?? true) this.go(1); }, 5000);
   }
   componentWillUnmount() { clearInterval(this.t); clearInterval(this.h); }
-  go(d) { this.setState(s => ({ slide: (s.slide + d + 15) % 15 })); }
+  go(d) { this.setState(s => ({ slide: (s.slide + d + 5) % 5 })); }
   fmtOdd(v) {
     const f = this.props.oddsFormat ?? 'Decimal';
     if (f === 'American') return v >= 2 ? '+' + Math.round((v - 1) * 100) : '-' + Math.round(100 / (v - 1));
@@ -462,9 +462,11 @@ class Component extends DCLogic {
   }
   renderVals() {
     const slides = [
-      { kicker: '200%', title: 'EXPRESS BET', sub: 'UP TO $200 FREE BET DAILY', art: 'hero art · trophies + prizes' },
-      { kicker: '400%', title: 'WELCOME BOOST', sub: 'UP TO 1000 FREE SPINS', art: 'hero art · casino' },
-      { kicker: '110', title: 'FREE BETS', sub: 'NATIONS LEAGUE QUEST', art: 'hero art · stadium' }
+      { src: 'uploads/banner-gains-hantes.webp', alt: 'BGaming — Gains hantés : 100 000 € en cash drops' },
+      { src: 'uploads/banner-tours-gratuits.webp', alt: "Jusqu'à 1000 tours gratuits + 400% de bonus de bienvenue" },
+      { src: 'uploads/banner-pari-combine.webp', alt: "200% pari combiné : jusqu'à 200 € de pari gratuit par jour" },
+      { src: 'uploads/banner-cosmo-clash.webp', alt: 'Cosmo Clash : 50 000 €, classement paris sportifs' },
+      { src: 'uploads/banner-chicken-race.webp', alt: "Cashback Chicken Race : jusqu'à 50 tours gratuits" }
     ];
     const base = this._base || (this._base = Date.now());
     const pal = ['#8a2a1c', '#1f6fb0', '#a4702a', '#c85a14', '#6a2f7a', '#7a3b12', '#4b2a8a', '#b01a4a'];
@@ -476,9 +478,9 @@ class Component extends DCLogic {
     ];
     return {
       nav: ['Sports', 'Live', 'E-sports', 'Live Casino', 'Casino', 'Mini Games', 'Virtual sport', 'Racing', 'Tournaments', 'Promotions'].map(l => ({ label: l, isNew: l === 'Tournaments' })),
-      slide: slides[this.state.slide % 3],
+      slides: slides.map((x, i) => ({ ...x, op: i === this.state.slide ? 1 : 0, pe: i === this.state.slide ? 'auto' : 'none', loading: i === 0 ? 'eager' : 'lazy' })),
       prevSlide: () => this.go(-1), nextSlide: () => this.go(1),
-      dots: Array.from({ length: 15 }, (_, i) => ({ w: i === this.state.slide ? '24px' : '8px', bg: i === this.state.slide ? '#f5c400' : '#fff', go: () => this.setState({ slide: i }) })),
+      dots: slides.map((_, i) => ({ w: i === this.state.slide ? '24px' : '8px', bg: i === this.state.slide ? '#f5c400' : '#fff', go: () => this.setState({ slide: i }) })),
       casinoBlocks: [
         { title: 'Casino', games: [
           { name: 'Aztec Magic Megaways', vendor: '', row: 'span 2', bg: pal[0] },
