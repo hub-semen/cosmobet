@@ -20,6 +20,8 @@ body{margin:0;background:#0b0c0e;color:#e8eaed;font-family:Poppins,system-ui,san
 a{color:#00e1f0;text-decoration:none}a:hover{color:#7ff3fa}
 button{font-family:inherit;cursor:pointer}
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
+[id]{scroll-margin-top:16px}
 .seo{font-size:15px;line-height:1.65;color:#fff}
 .seo h2{margin:0 0 14px;font-size:22px;font-weight:700;line-height:1.3;color:#fff;display:flex;align-items:center;gap:10px;text-wrap:balance}
 .seo h2::before{content:"";flex:none;width:14px;height:14px;border-radius:3px;background:#00e1f0}
@@ -78,7 +80,7 @@ button{font-family:inherit;cursor:pointer}
   <nav style="border-top:1px solid #1c1e22">
     <div style="max-width:1110px;margin:0 auto;padding:0 16px;display:flex;justify-content:space-between;gap:12px;overflow-x:auto">
       <sc-for list="{{ nav }}" as="n" hint-placeholder-count="10">
-        <a href="#" style="position:relative;color:#e8eaed;font-size:12px;padding:16px 0;white-space:nowrap" style-hover="color:#00e1f0">{{ n.label }}<sc-if value="{{ n.isNew }}"><span style="position:absolute;top:2px;left:50%;transform:translateX(-50%);background:#e3174f;color:#fff;font-size:8px;padding:0 5px;border-radius:3px">New</span></sc-if></a>
+        <a href="{{ n.href }}" style="position:relative;color:#e8eaed;font-size:12px;padding:16px 0;white-space:nowrap" style-hover="color:#00e1f0">{{ n.label }}<sc-if value="{{ n.isNew }}"><span style="position:absolute;top:2px;left:50%;transform:translateX(-50%);background:#e3174f;color:#fff;font-size:8px;padding:0 5px;border-radius:3px">New</span></sc-if></a>
       </sc-for>
     </div>
   </nav>
@@ -110,7 +112,7 @@ button{font-family:inherit;cursor:pointer}
 
   <div style="display:flex;flex-direction:column;gap:14px">
   <section class="seo">
-    <div class="seo-card">
+    <div id="offre-cosmobet" class="seo-card">
       <h2>Ce que propose Cosmobet aux joueurs français</h2>
       <p>Pour répondre aux attentes des utilisateurs en France, Cosmobet lance un écosystème de jeux complet alliant divertissement, diversité et fluidité d'utilisation. La plateforme rassemble plus de 6 000 jeux, une section dédiée aux paris sportifs internationaux et des fonctionnalités conçues pour simplifier l'utilisation au quotidien.</p>
       <div class="seo-stats">
@@ -122,7 +124,7 @@ button{font-family:inherit;cursor:pointer}
     </div>
   </section>
 
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:14px">
+  <div id="casino" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:14px">
     <sc-for list="{{ casinoBlocks }}" as="b" hint-placeholder-count="2">
       <div style="background:#16181c;border-radius:8px;padding:10px">
         <div style="display:flex;align-items:center;gap:8px;padding:6px 2px 10px">
@@ -148,7 +150,7 @@ button{font-family:inherit;cursor:pointer}
   </div>
 
   <section class="seo">
-    <div class="seo-card">
+    <div id="plateforme" class="seo-card">
       <h2>Paris sportifs, casino et autres jeux sur une seule plateforme</h2>
       <p>La centralisation des services est l'un des piliers de l'offre de Cosmobet :</p>
       <ul class="seo-list">
@@ -160,7 +162,7 @@ button{font-family:inherit;cursor:pointer}
   </section>
   </div>
 
-  <div>
+  <div id="mini-jeux">
     <div style="display:flex;align-items:center;gap:8px;padding:0 10px 18px">
       <span style="font-weight:600;font-size:14px;flex:1">Mini Games</span>
       <span style="color:#fff;font-size:16px;padding:0 10px">‹</span><span style="color:#fff;font-size:16px;padding:0 4px">›</span>
@@ -176,12 +178,12 @@ button{font-family:inherit;cursor:pointer}
     </div>
   </div>
 
-  <section class="seo seo-card">
+  <section id="jeux-casino" class="seo seo-card">
     <h2>Sélection de jeux chez Cosmobet Casino</h2>
     <p>Le catalogue comprend plus de 6 000 titres provenant de plus de 80 éditeurs internationaux, garantissant ainsi une grande diversité dans nos mécanismes de jeu.</p>
     <div class="seo-grid">
       <div class="seo-sub">
-        <h3>Jeux de table</h3>
+        <h3 id="jeux-de-table">Jeux de table</h3>
         <p>Vous y trouverez des jeux traditionnels tels que ceux mentionnés ci-dessus, le baccarat, le poker, le craps et bien d'autres encore. Découvrez ci-dessous ces titres de Cosmobet que nous vous recommandons :</p>
         <ul class="seo-list">
           <li>Roulette européenne (1x2 Gaming)</li>
@@ -191,19 +193,19 @@ button{font-family:inherit;cursor:pointer}
         </ul>
       </div>
       <div class="seo-sub">
-        <h3>Casino en direct</h3>
+        <h3 id="casino-en-direct">Casino en direct</h3>
         <p>Les jeux avec croupier dans Cosmobet reproduisent au mieux l'ambiance d'un casino classique. Le croupier travaille depuis un studio à distance. Après avoir pris les paris en ligne, il lance la roulette, distribue ou retourne ces cartes — bref, il s'acquitte des tâches qui lui incombent. Vos résultats sont enregistrés automatiquement et s'affichent immédiatement sur les écrans des participants.</p>
       </div>
     </div>
     <div class="seo-sub" style="margin-top:14px">
-      <h3>Fournisseurs de jeux Cosmobet</h3>
+      <h3 id="fournisseurs">Fournisseurs de jeux Cosmobet</h3>
       <p>Les machines à sous disponibles sur le site CosmoBet sont proposées par plus de 40 fournisseurs populaires. Parmi eux :</p>
       <div class="seo-chips"><span>3OAKS</span><span>Amatic</span><span>ELK Studios</span><span>Endorphina</span><span>Thunderkick</span><span>Evoplay</span><span>Playson</span><span>Blueprint Gaming</span><span>Netgame</span></div>
       <p>… et bien d'autres encore. Le casino propose également des dizaines de jeux rapides signés BGaming, Fugaso, Gamzix, Spribe, Mancala Gaming, Onlyplay et Turbo Games. Certains fournisseurs proposent du contenu original couvrant plusieurs catégories de jeux à la fois.</p>
     </div>
   </section>
 
-  <div>
+  <div id="top-matchs">
     <div style="display:flex;align-items:center;gap:8px;padding:0 0 12px">
       <span style="width:12px;height:12px;background:#00e1f0;border-radius:3px"></span>
       <span style="font-size:11px;font-weight:500;flex:1">Top Events</span>
@@ -227,12 +229,12 @@ button{font-family:inherit;cursor:pointer}
   </div>
 
   <section class="seo" style="display:flex;flex-direction:column;gap:14px">
-    <div class="seo-card">
+    <div id="paris-sportifs" class="seo-card">
       <h2>Cosmobet sport et compétitions couverts</h2>
       <p>Cosmobet couvre une quarantaine de disciplines différentes, proposant chaque jour des milliers de cotes de paris sportifs sur chaque championnat international et régional. Plutôt que de se limiter aux matchs de haut niveau, la couverture s'étend des grands tournois mondiaux aux divisions secondaires.</p>
       <p>Les parieurs de Cosmobet peuvent se concentrer sur les principales compétitions nationales européennes, telles que la Ligue 1, la Premier League, la Liga, la Serie A et la Bundesliga, ainsi que sur les rencontres continentales de l’UEFA Champions League et de l’UEFA Europa League. Du côté des divisions inférieures et des matchs de coupes locales, l'intégration est également totale. L’offre de tennis s’étend tout au long de l’année grâce aux calendriers de l’ATP, de la WTA et des tournois du Grand Chelem, tandis que le basket-ball va des paris spécifiques par match de la NBA aux rencontres de l’Euroligue.</p>
     </div>
-  <div style="background:#16181c;border-radius:8px;padding:10px">
+  <div id="tournois" style="background:#16181c;border-radius:8px;padding:10px">
     <div style="display:flex;align-items:center;gap:8px;padding:4px 2px 10px">
       <span style="width:18px;height:18px;border-radius:4px;background:#00e1f0;opacity:.85"></span>
       <span style="font-weight:600;font-size:15px;flex:1">TOURNOIS</span>
@@ -255,7 +257,7 @@ button{font-family:inherit;cursor:pointer}
       </sc-for>
     </div>
   </div>
-    <div class="seo-card">
+    <div id="types-paris" class="seo-card">
       <h2>Types de paris et cotes (résultat, totaux, handicaps)</h2>
       <p>Cosmobet garantit une marge moyenne compétitive de 5 à 6 % sur les grands championnats européens de football et les tournois de paris eSport. Vous pouvez entièrement personnaliser le format d'affichage du coupon de pari selon vos préférences (décimal, fractionnel ou américain).</p>
       <div class="seo-table-wrap">
@@ -270,15 +272,15 @@ button{font-family:inherit;cursor:pointer}
         </table>
       </div>
     </div>
-    <div class="seo-card">
+    <div id="paris-combines" class="seo-card">
       <h2>Paris combinés et options avancées dans Cosmobet</h2>
       <p>En regroupant plusieurs sélections sur un seul coupon de pari exponentiel, vos paris combinés peuvent décupler vos gains potentiels. L'ajout d'options innovantes telles que « Acca Boost » augmente automatiquement vos chances de gagner lorsque vous ajoutez des sélections éligibles. Par ailleurs, la fonction « Cash Out » dans Cosmobet vous permet de maîtriser la gestion de vos risques : vous pouvez retirer votre mise alors que le pari est encore en cours, ce qui vous permet de garantir un gain anticipé ou d'éviter le pire scénario.</p>
     </div>
-    <div class="seo-card">
+    <div id="bonus" class="seo-card">
       <h2>Bonus et promotions</h2>
       <p>Le programme de fidélité destiné aux clients fidèles et aux nouveaux clients est assez varié. Il propose des bonus Cosmobet sur vos dépôts, des cadeaux sans condition de dépôt, ainsi qu'un cashback hebdomadaire. Les nouveaux joueurs bénéficient d'emblée de deux récompenses.</p>
     </div>
-  <div style="background:#16181c;border-radius:8px;padding:10px">
+  <div id="promotions" style="background:#16181c;border-radius:8px;padding:10px">
     <div style="display:flex;align-items:center;gap:8px;padding:4px 2px 10px">
       <span style="width:18px;height:18px;border-radius:4px;background:#00e1f0;opacity:.85"></span>
       <span style="font-weight:600;font-size:15px;flex:1">Promotions</span>
@@ -301,17 +303,17 @@ button{font-family:inherit;cursor:pointer}
       <button style="background:#00e1f0;color:#04181b;border:0;border-radius:6px;padding:8px 22px;font-size:14px;font-weight:600" style-hover="background:#7ff3fa">J'en profite</button>
     </div>
   </div>
-    <div class="seo-card">
+    <div id="bienvenue" class="seo-card">
       <h2>Offre de bienvenue</h2>
       <p>Le casino propose un bonus de bienvenue Cosmobet sur le premier dépôt aux joueurs qui effectuent un dépôt en monnaies fiduciaires ou en cryptomonnaies, et offre également des bonus sur le deuxième et le troisième dépôt.</p>
       <div class="seo-grid">
         <div class="seo-sub">
-          <h3>Promotions régulières et free bets Cosmobet</h3>
+          <h3 id="cashback">Promotions régulières et free bets Cosmobet</h3>
           <p>Le principal cashback régulier est le Cashback Cosmobet (10 % des pertes nettes mensuelles sur tous les dépôts). Sa principale particularité est qu’il n’y a pas de condition de mise (0x), ni de limite sur la mise maximale ou le retrait maximal.</p>
           <p>Le cashback standard en monnaie fiduciaire (en EUR) est accordé au cas par cas dans le cadre du service VIP (généralement 10 % pour une perte minimale de 100 €), et non selon un barème hebdomadaire fixe basé sur le volume de mise.</p>
         </div>
         <div class="seo-sub">
-          <h3>Bonus crypto</h3>
+          <h3 id="bonus-crypto">Bonus crypto</h3>
           <p>Chaque mois, les joueurs ayant effectué un dépôt et joué en utilisant des crypto-monnaies peuvent demander le remboursement de 20 % de leurs pertes totales du mois sous forme de cashback. Et vous n'avez pas besoin de saisir manuellement le code promo Cosmobet ; il est appliqué automatiquement.</p>
         </div>
       </div>
@@ -328,12 +330,12 @@ button{font-family:inherit;cursor:pointer}
 </div>
 
 <main class="seo" style="max-width:938px;margin:0 auto;padding:40px 16px 0;display:flex;flex-direction:column;gap:14px">
-  <section class="seo-card">
+  <section id="compte" class="seo-card">
     <h2>Compte, dépôts et retraits</h2>
     <p>Les joueurs de Cosmobet ont accès aux cartes bancaires, aux portefeuilles électroniques et aux cryptomonnaies populaires, avec un crédit immédiat des dépôts et un traitement rapide des retraits après vérification.</p>
     <div class="seo-grid">
       <div class="seo-sub">
-        <h3>Ouverture et vérification du compte</h3>
+        <h3 id="inscription">Ouverture et vérification du compte</h3>
         <p>Pour jouer sur la plateforme Cosmo Bet, vous devez créer un compte.</p>
         <ol class="seo-steps">
           <li>Cliquez sur le bouton d'inscription situé dans l'en-tête du site.</li>
@@ -344,14 +346,14 @@ button{font-family:inherit;cursor:pointer}
         <p>Avant de pouvoir retirer des fonds, les clients de CosmoBet doivent vérifier leur identité. Il est possible de télécharger manuellement des copies numérisées ou des photos de leurs documents, ou d'utiliser d'autres méthodes de vérification.</p>
       </div>
       <div class="seo-sub">
-        <h3>Moyens de paiement, dépôts et retraits</h3>
+        <h3 id="paiements">Moyens de paiement, dépôts et retraits</h3>
         <p>Pour effectuer des transactions avec le casino en ligne CosmoBet, vous devez disposer d'une carte Visa ou MasterCard. Celle-ci doit être au nom du client de l'établissement. Tout paiement effectué à partir des coordonnées bancaires d'une autre personne sera refusé immédiatement ou ultérieurement, après vérification. Il est possible d'effectuer un dépôt via Google Pay ou Apple Pay.</p>
         <p>Dans la plupart des cas, l'argent est crédité presque instantanément dans Cosmobet. Veuillez noter que certaines banques fixent des limites pour les virements vers les casinos en ligne.</p>
       </div>
     </div>
   </section>
 
-  <section class="seo-card">
+  <section id="mobile" class="seo-card">
     <h2>Cosmobet sur mobile</h2>
     <p>Plus des deux tiers des joueurs accèdent au casino depuis leur téléphone portable. L'interface adaptative du site garantit une navigation rapide : le design de notre plateforme s'adapte instantanément à la taille de l'écran de l'utilisateur.</p>
     <p>Cependant, chez CosmoBet, nous ne nous limitons pas à la version mobile : nous avons également développé des applications pratiques pour iOS et Android. Une fois l'application installée, vos jeux préférés seront toujours à portée de main. Les joueurs n'auront pas à se reconnecter à chaque fois, et les applications permettent en outre d'économiser du trafic Internet.</p>
@@ -359,18 +361,18 @@ button{font-family:inherit;cursor:pointer}
   </section>
 
   <div class="seo-grid" style="margin-top:0">
-    <section class="seo-card">
+    <section id="licence" class="seo-card">
       <h2>Licence, sécurité et service client</h2>
       <p>Le casino en ligne CosmoBet est exploité par Santeda International B.V., une société immatriculée à Curaçao sous le numéro 151296. La licence d'exploitation n° OGL/2024/1798/1048 a été délivrée par la Curaçao Gaming Authority, conformément à la législation de Curaçao sur les jeux de hasard (NOOGH).</p>
     </section>
-    <section class="seo-card">
+    <section id="support" class="seo-card">
       <h2>Contacter le support</h2>
       <p>Le casino dispose d'un chat en ligne accessible en permanence, sur lequel vous pouvez poser vos questions à un responsable du support technique. Vous pouvez également contacter le personnel via les canaux traditionnels : e-mail ou chat live.</p>
       <p>Le site Cosmobet dispose également d'une rubrique FAQ où vous trouverez des informations sur tous les sujets principaux.</p>
     </section>
   </div>
 
-  <section class="seo-card">
+  <section id="faq" class="seo-card">
     <h2>FAQ</h2>
     <div class="seo-faq">
       <details><summary>Pourquoi Cosmobet peut-il demander une vérification d’identité ?</summary><p>La procédure KYC (Know Your Customer) dans Cosmobet est une exigence légale visant à vérifier l'âge du joueur, à protéger le compte contre tout accès non autorisé et à lutter contre la fraude ainsi que le blanchiment d'argent.</p></details>
@@ -384,7 +386,7 @@ button{font-family:inherit;cursor:pointer}
     </div>
   </section>
 
-  <section class="seo-card">
+  <section id="jeu-responsable" class="seo-card">
     <h2>Sécurité et jeu responsable chez Cosmobet</h2>
     <p>La plateforme sécurise toutes les transactions et les données personnelles grâce à un cryptage SSL de niveau bancaire. Parallèlement, les services garantissent l'intégrité des jeux et fournissent aux joueurs des outils leur permettant de contrôler entièrement leur budget.</p>
     <ul class="seo-list">
@@ -400,19 +402,19 @@ button{font-family:inherit;cursor:pointer}
       <span style="font-weight:700;font-size:12px;color:#cfd3d8;text-transform:uppercase;letter-spacing:.5px">{{ x }}</span>
     </sc-for>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:24px;padding:60px 0 50px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:28px 24px;padding:50px 0 44px">
     <sc-for list="{{ footerCols }}" as="col" hint-placeholder-count="3">
       <div>
-        <div style="font-size:11px;font-weight:500;margin-bottom:12px">{{ col.title }}</div>
-        <div style="display:flex;flex-direction:column;gap:6px">
-          <sc-for list="{{ col.links }}" as="l"><a href="#" style="font-size:8px;color:#8b9098">{{ l }}</a></sc-for>
+        <div style="font-size:13px;font-weight:600;margin-bottom:12px;color:#fff">{{ col.title }}</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <sc-for list="{{ col.links }}" as="l"><a href="{{ l.href }}" style="font-size:12px;color:#8b9098" style-hover="color:#00e1f0">{{ l.label }}</a></sc-for>
         </div>
       </div>
     </sc-for>
     <div style="display:flex;flex-direction:column;justify-content:space-between;gap:24px">
       <div>
-        <div style="font-size:11px;font-weight:500;margin-bottom:12px">Contact Us</div>
-        <a href="#" style="font-size:8px;color:#8b9098">Live Chat</a>
+        <div style="font-size:13px;font-weight:600;margin-bottom:12px;color:#fff">Nous contacter</div>
+        <a href="#support" style="font-size:12px;color:#8b9098" style-hover="color:#00e1f0">Chat en direct</a>
       </div>
       <div style="display:flex;gap:10px">
         <a href="#" style="width:36px;height:36px;border-radius:50%;background:#5865f2;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">Ds</a>
@@ -484,7 +486,11 @@ class Component extends DCLogic {
       ['San Marino', 'Finland', '26.09 · 16:00', 'C', [29.3, 10.04, 1.07]]
     ];
     return {
-      nav: ['Sports', 'Live', 'E-sports', 'Live Casino', 'Casino', 'Mini Games', 'Virtual sport', 'Racing', 'Tournaments', 'Promotions'].map(l => ({ label: l, isNew: l === 'Tournaments' })),
+      nav: [
+        ['Paris sportifs', '#paris-sportifs'], ['Top matchs', '#top-matchs'], ['Casino', '#casino'], ['Casino en direct', '#casino-en-direct'],
+        ['Mini-jeux', '#mini-jeux'], ['Tournois', '#tournois'], ['Promotions', '#promotions'], ['Bonus', '#bienvenue'],
+        ['Paiements', '#paiements'], ['FAQ', '#faq']
+      ].map(([label, href]) => ({ label, href, isNew: href === '#tournois' })),
       slides: slides.map((x, i) => ({ ...x, op: i === this.state.slide ? 1 : 0, pe: i === this.state.slide ? 'auto' : 'none', loading: i === 0 ? 'eager' : 'lazy' })),
       prevSlide: () => this.go(-1), nextSlide: () => this.go(1),
       dots: slides.map((_, i) => ({ w: i === this.state.slide ? '24px' : '8px', bg: i === this.state.slide ? '#f5c400' : '#fff', go: () => this.setState({ slide: i }) })),
@@ -520,10 +526,11 @@ class Component extends DCLogic {
       payments: [['VISA', '#3a62ff'], ['mastercard', '#ff5f00'], ['Skrill', '#c2338f'], ['NETELLER', '#8dc641'], ['paysafecard', '#00a2e8'], ['bitcoin', '#f7931a'], ['TRON TRX', '#ff060a'], ['Litecoin LTC', '#5b8fd9'], ['Ethereum ETH', '#627eea'], ['Dogecoin DOGE', '#c2a633']].map(([n, c]) => ({ n, c })),
       providers: ['bgaming', 'Evoplay', 'Habanero', 'BGaming', 'Gameart', 'Thunderspin', 'endorphina', 'Slotopia', 'Playson'],
       footerCols: [
-        { title: 'Our Products', links: ['Sports Betting', 'Virtual Sports', 'E-Sport', 'Mini Games', 'Casino', 'Live Casino', 'Accounts, Payouts & Bonuses'] },
-        { title: 'Information', links: ['Company Details', 'Responsible Gaming', 'Privacy Policy', 'Affiliate', 'Sportsbook Terms', 'Affiliate Program T&C'] },
-        { title: 'Help', links: ['Terms & Conditions', 'F.A.Q (Frequently Asked Questions)', 'KYC/AML Policy', 'Refund Policy', 'Dispute Resolution', 'Fairness & RNG Testing Methods', 'Self Exclusion'] }
-      ]
+        { title: 'Jeux & paris', links: [['Paris sportifs', '#paris-sportifs'], ['Top matchs', '#top-matchs'], ['Types de paris et cotes', '#types-paris'], ['Paris combinés', '#paris-combines'], ['Tournois', '#tournois'], ['Casino', '#casino'], ['Casino en direct', '#casino-en-direct'], ['Jeux de table', '#jeux-de-table'], ['Mini-jeux', '#mini-jeux'], ['Fournisseurs de jeux', '#fournisseurs']] },
+        { title: 'Bonus & offres', links: [['Bonus et promotions', '#bonus'], ['Promotions', '#promotions'], ['Offre de bienvenue', '#bienvenue'], ['Cashback', '#cashback'], ['Bonus crypto', '#bonus-crypto']] },
+        { title: 'Compte & paiements', links: [['Compte, dépôts et retraits', '#compte'], ['Inscription et vérification', '#inscription'], ['Moyens de paiement', '#paiements'], ['Cosmobet sur mobile', '#mobile']] },
+        { title: 'À propos & aide', links: [['Ce que propose Cosmobet', '#offre-cosmobet'], ['Une seule plateforme', '#plateforme'], ['Sélection de jeux', '#jeux-casino'], ['Licence', '#licence'], ['FAQ', '#faq'], ['Jeu responsable', '#jeu-responsable']] }
+      ].map(c => ({ title: c.title, links: c.links.map(([label, href]) => ({ label, href })) }))
     };
   }
 }
