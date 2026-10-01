@@ -119,15 +119,6 @@ button{font-family:inherit;cursor:pointer}
         <div><b>1</b><span>compte et portefeuille unifié</span></div>
       </div>
     </div>
-    <div class="seo-card" style="margin-top:14px">
-      <h2>Paris sportifs, casino et autres jeux sur une seule plateforme</h2>
-      <p>La centralisation des services est l'un des piliers de l'offre de Cosmobet :</p>
-      <ul class="seo-list">
-        <li>Passez des paris sportifs aux machines à sous ou au Casino Cosmobet en direct sans avoir à transférer vos fonds d'un portefeuille à l'autre.</li>
-        <li>Le site est conçu pour offrir un chargement rapide des jeux et des mises à jour instantanées des cotes.</li>
-        <li>Outre les machines à sous et paris sportifs Cosmobet traditionnels, la plateforme dispose également d'une section dédiée aux mini-jeux (Plinko, Dino, JetX), particulièrement populaires en raison de leur gameplay rapide.</li>
-      </ul>
-    </div>
   </section>
 
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:14px">
@@ -136,7 +127,6 @@ button{font-family:inherit;cursor:pointer}
         <div style="display:flex;align-items:center;gap:8px;padding:6px 2px 10px">
           <span style="width:18px;height:18px;border-radius:4px;background:#00e1f0;opacity:.85"></span>
           <span style="font-weight:600;font-size:14px;flex:1">{{ b.title }}</span>
-          <a href="#" style="font-size:9px;font-weight:600">View More</a>
           <button onClick="{{ b.prev }}" aria-label="Jeux précédents" style="background:transparent;border:0;color:{{ b.prevColor }};font-size:16px;padding:0 10px">‹</button><button onClick="{{ b.next }}" aria-label="Jeux suivants" style="background:transparent;border:0;color:{{ b.nextColor }};font-size:16px;padding:0 4px">›</button>
         </div>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:98px 98px;gap:6px">
@@ -154,6 +144,34 @@ button{font-family:inherit;cursor:pointer}
         </div>
       </div>
     </sc-for>
+  </div>
+
+  <section class="seo">
+    <div class="seo-card">
+      <h2>Paris sportifs, casino et autres jeux sur une seule plateforme</h2>
+      <p>La centralisation des services est l'un des piliers de l'offre de Cosmobet :</p>
+      <ul class="seo-list">
+        <li>Passez des paris sportifs aux machines à sous ou au Casino Cosmobet en direct sans avoir à transférer vos fonds d'un portefeuille à l'autre.</li>
+        <li>Le site est conçu pour offrir un chargement rapide des jeux et des mises à jour instantanées des cotes.</li>
+        <li>Outre les machines à sous et paris sportifs Cosmobet traditionnels, la plateforme dispose également d'une section dédiée aux mini-jeux (Plinko, Dino, JetX), particulièrement populaires en raison de leur gameplay rapide.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div>
+    <div style="display:flex;align-items:center;gap:8px;padding:0 10px 18px">
+      <span style="font-weight:600;font-size:14px;flex:1">Mini Games</span>
+      <span style="color:#fff;font-size:16px;padding:0 10px">‹</span><span style="color:#fff;font-size:16px;padding:0 4px">›</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(140px,40%),1fr));gap:24px;padding:0 10px">
+      <sc-for list="{{ miniGames }}" as="m" hint-placeholder-count="5">
+        <a href="#" style="display:block;position:relative;aspect-ratio:315/388;border-radius:12px;overflow:hidden;background:#16181c;box-shadow:0 10px 24px rgba(0,0,0,.5);transition:transform .2s" style-hover="transform:translateY(-3px)">
+          <img src="{{ m.img }}" alt="{{ m.name }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
+          <div style="position:absolute;inset:auto 0 0 0;height:50%;background:linear-gradient(transparent,rgba(0,0,0,.7))"></div>
+          <div style="position:absolute;left:0;right:0;bottom:10px;text-align:center;font-weight:900;font-size:14px;line-height:1.1;text-transform:uppercase;color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.5);padding:0 6px">{{ m.name }}</div>
+        </a>
+      </sc-for>
+    </div>
   </div>
 
   <section class="seo seo-card">
@@ -184,22 +202,6 @@ button{font-family:inherit;cursor:pointer}
   </section>
 
   <div>
-    <div style="display:flex;align-items:center;gap:8px;padding:0 10px 18px">
-      <span style="font-weight:600;font-size:14px;flex:1">Mini Games</span>
-      <span style="color:#fff;font-size:16px;padding:0 10px">‹</span><span style="color:#fff;font-size:16px;padding:0 4px">›</span>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(140px,40%),1fr));gap:24px;padding:0 10px">
-      <sc-for list="{{ miniGames }}" as="m" hint-placeholder-count="5">
-        <a href="#" style="display:block;position:relative;aspect-ratio:315/388;border-radius:12px;overflow:hidden;background:#16181c;box-shadow:0 10px 24px rgba(0,0,0,.5);transition:transform .2s" style-hover="transform:translateY(-3px)">
-          <img src="{{ m.img }}" alt="{{ m.name }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
-          <div style="position:absolute;inset:auto 0 0 0;height:50%;background:linear-gradient(transparent,rgba(0,0,0,.7))"></div>
-          <div style="position:absolute;left:0;right:0;bottom:10px;text-align:center;font-weight:900;font-size:14px;line-height:1.1;text-transform:uppercase;color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.5);padding:0 6px">{{ m.name }}</div>
-        </a>
-      </sc-for>
-    </div>
-  </div>
-
-  <div>
     <div style="display:flex;align-items:center;gap:8px;padding:0 0 12px">
       <span style="width:12px;height:12px;background:#00e1f0;border-radius:3px"></span>
       <span style="font-size:11px;font-weight:500;flex:1">Top Events</span>
@@ -228,27 +230,6 @@ button{font-family:inherit;cursor:pointer}
       <p>Cosmobet couvre une quarantaine de disciplines différentes, proposant chaque jour des milliers de cotes de paris sportifs sur chaque championnat international et régional. Plutôt que de se limiter aux matchs de haut niveau, la couverture s'étend des grands tournois mondiaux aux divisions secondaires.</p>
       <p>Les parieurs de Cosmobet peuvent se concentrer sur les principales compétitions nationales européennes, telles que la Ligue 1, la Premier League, la Liga, la Serie A et la Bundesliga, ainsi que sur les rencontres continentales de l’UEFA Champions League et de l’UEFA Europa League. Du côté des divisions inférieures et des matchs de coupes locales, l'intégration est également totale. L’offre de tennis s’étend tout au long de l’année grâce aux calendriers de l’ATP, de la WTA et des tournois du Grand Chelem, tandis que le basket-ball va des paris spécifiques par match de la NBA aux rencontres de l’Euroligue.</p>
     </div>
-    <div class="seo-card">
-      <h2>Types de paris et cotes (résultat, totaux, handicaps)</h2>
-      <p>Cosmobet garantit une marge moyenne compétitive de 5 à 6 % sur les grands championnats européens de football et les tournois de paris eSport. Vous pouvez entièrement personnaliser le format d'affichage du coupon de pari selon vos préférences (décimal, fractionnel ou américain).</p>
-      <div class="seo-table-wrap">
-        <table class="seo-table">
-          <thead><tr><th>Type de pari</th><th>Description du marché dans Cosmobet</th></tr></thead>
-          <tbody>
-            <tr><td>Résultats bruts (1N2 &amp; Double Chance)</td><td>Pronostic sur l'issue réglementaire de la rencontre.</td></tr>
-            <tr><td>Totaux (Over / Under)</td><td>Mise sur le volume global ou individuel d'actions.</td></tr>
-            <tr><td>Handicaps (Européens et Asiatiques)</td><td>Écart virtuel de points/buts attribué dès le coup d'envoi.</td></tr>
-            <tr><td>Propositions (Props &amp; Stats)</td><td>Performances individuelles.</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div class="seo-card">
-      <h2>Paris combinés et options avancées dans Cosmobet</h2>
-      <p>En regroupant plusieurs sélections sur un seul coupon de pari exponentiel, vos paris combinés peuvent décupler vos gains potentiels. L'ajout d'options innovantes telles que « Acca Boost » augmente automatiquement vos chances de gagner lorsque vous ajoutez des sélections éligibles. Par ailleurs, la fonction « Cash Out » dans Cosmobet vous permet de maîtriser la gestion de vos risques : vous pouvez retirer votre mise alors que le pari est encore en cours, ce qui vous permet de garantir un gain anticipé ou d'éviter le pire scénario.</p>
-    </div>
-  </section>
-
   <div style="background:#16181c;border-radius:8px;padding:10px">
     <div style="display:flex;align-items:center;gap:8px;padding:4px 2px 10px">
       <span style="width:18px;height:18px;border-radius:4px;background:#00e1f0;opacity:.85"></span>
@@ -272,6 +253,26 @@ button{font-family:inherit;cursor:pointer}
       </sc-for>
     </div>
   </div>
+    <div class="seo-card">
+      <h2>Types de paris et cotes (résultat, totaux, handicaps)</h2>
+      <p>Cosmobet garantit une marge moyenne compétitive de 5 à 6 % sur les grands championnats européens de football et les tournois de paris eSport. Vous pouvez entièrement personnaliser le format d'affichage du coupon de pari selon vos préférences (décimal, fractionnel ou américain).</p>
+      <div class="seo-table-wrap">
+        <table class="seo-table">
+          <thead><tr><th>Type de pari</th><th>Description du marché dans Cosmobet</th></tr></thead>
+          <tbody>
+            <tr><td>Résultats bruts (1N2 &amp; Double Chance)</td><td>Pronostic sur l'issue réglementaire de la rencontre.</td></tr>
+            <tr><td>Totaux (Over / Under)</td><td>Mise sur le volume global ou individuel d'actions.</td></tr>
+            <tr><td>Handicaps (Européens et Asiatiques)</td><td>Écart virtuel de points/buts attribué dès le coup d'envoi.</td></tr>
+            <tr><td>Propositions (Props &amp; Stats)</td><td>Performances individuelles.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="seo-card">
+      <h2>Paris combinés et options avancées dans Cosmobet</h2>
+      <p>En regroupant plusieurs sélections sur un seul coupon de pari exponentiel, vos paris combinés peuvent décupler vos gains potentiels. L'ajout d'options innovantes telles que « Acca Boost » augmente automatiquement vos chances de gagner lorsque vous ajoutez des sélections éligibles. Par ailleurs, la fonction « Cash Out » dans Cosmobet vous permet de maîtriser la gestion de vos risques : vous pouvez retirer votre mise alors que le pari est encore en cours, ce qui vous permet de garantir un gain anticipé ou d'éviter le pire scénario.</p>
+    </div>
+  </section>
 
   <section class="seo" style="display:flex;flex-direction:column;gap:14px">
     <div class="seo-card">
