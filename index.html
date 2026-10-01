@@ -80,15 +80,15 @@ html{scroll-behavior:smooth}
   <div style="max-width:1110px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:16px">
     <a href="#" style="display:flex;align-items:center"><img src="uploads/cosmobet-logo.png" alt="Cosmobet" style="height:26px;width:auto;display:block"></a>
     <div style="display:flex;align-items:center;gap:10px;font-size:11px">
-      <button style="background:#e3174f;color:#fff;border:0;border-radius:6px;padding:7px 14px;font-weight:600;font-size:11px">Sign Up</button>
-      <button style="background:#00e1f0;color:#04181b;border:0;border-radius:6px;padding:7px 14px;font-weight:600;font-size:11px">Log In</button>
+      <button style="background:#e3174f;color:#fff;border:0;border-radius:6px;padding:7px 14px;font-weight:600;font-size:11px">S'inscrire</button>
+      <button style="background:#00e1f0;color:#04181b;border:0;border-radius:6px;padding:7px 14px;font-weight:600;font-size:11px">Connexion</button>
       <span role="img" aria-label="Français" title="Français" style="display:flex;width:24px;height:16px;border-radius:3px;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.2)"><span style="flex:1;background:#0055a4"></span><span style="flex:1;background:#fff"></span><span style="flex:1;background:#ef4135"></span></span>
     </div>
   </div>
   <nav style="border-top:1px solid #1c1e22">
     <div style="max-width:1110px;margin:0 auto;padding:0 16px;display:flex;justify-content:space-between;gap:12px;overflow-x:auto">
       <sc-for list="{{ nav }}" as="n" hint-placeholder-count="10">
-        <a href="{{ n.href }}" style="position:relative;color:#e8eaed;font-size:12px;padding:16px 0;white-space:nowrap" style-hover="color:#00e1f0">{{ n.label }}<sc-if value="{{ n.isNew }}"><span style="position:absolute;top:2px;left:50%;transform:translateX(-50%);background:#e3174f;color:#fff;font-size:8px;padding:0 5px;border-radius:3px">New</span></sc-if></a>
+        <a href="{{ n.href }}" style="position:relative;color:#e8eaed;font-size:12px;padding:16px 0;white-space:nowrap" style-hover="color:#00e1f0">{{ n.label }}<sc-if value="{{ n.isNew }}"><span style="position:absolute;top:2px;left:50%;transform:translateX(-50%);background:#e3174f;color:#fff;font-size:8px;padding:0 5px;border-radius:3px">Nouveau</span></sc-if></a>
       </sc-for>
     </div>
   </nav>
@@ -146,7 +146,7 @@ html{scroll-behavior:smooth}
               <sc-if value="{{ g.img }}"><img src="{{ g.img }}" alt="{{ g.alt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{ g.pos }};display:block"></sc-if>
               <sc-if value="{{ g.placeholder }}">
                 <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 8px,transparent 8px 16px)"></div>
-                <div style="position:absolute;top:6px;left:6px;font-family:ui-monospace,monospace;font-size:8px;color:rgba(255,255,255,.45)">game art</div>
+                <div style="position:absolute;top:6px;left:6px;font-family:ui-monospace,monospace;font-size:8px;color:rgba(255,255,255,.45)">visuel du jeu</div>
               </sc-if>
               <sc-if value="{{ g.shade }}"><div style="position:absolute;inset:auto 0 0 0;height:60%;background:linear-gradient(transparent,rgba(0,0,0,.75))"></div></sc-if>
               <div style="display:{{ g.label }};position:absolute;left:0;right:0;bottom:6px;text-align:center;font-weight:900;font-size:12px;line-height:1.1;text-transform:uppercase;color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.5);padding:0 4px">{{ g.name }}<div style="font-size:7px;font-weight:700;opacity:.85">{{ g.vendor }}</div></div>
@@ -172,13 +172,13 @@ html{scroll-behavior:smooth}
 
   <div id="mini-jeux">
     <div style="display:flex;align-items:center;gap:8px;padding:0 10px 18px">
-      <span style="font-weight:600;font-size:14px;flex:1">Mini Games</span>
+      <span style="font-weight:600;font-size:14px;flex:1">Mini-jeux</span>
       <span style="color:#fff;font-size:16px;padding:0 10px">‹</span><span style="color:#fff;font-size:16px;padding:0 4px">›</span>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(140px,40%),1fr));gap:24px;padding:0 10px">
       <sc-for list="{{ miniGames }}" as="m" hint-placeholder-count="5">
         <a href="#" style="display:block;position:relative;aspect-ratio:315/388;border-radius:12px;overflow:hidden;background:#16181c;box-shadow:0 10px 24px rgba(0,0,0,.5);transition:transform .2s" style-hover="transform:translateY(-3px)">
-          <img src="{{ m.img }}" alt="{{ m.name }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
+          <img src="{{ m.img }}" alt="{{ m.alt }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
           <div style="position:absolute;inset:auto 0 0 0;height:50%;background:linear-gradient(transparent,rgba(0,0,0,.7))"></div>
           <div style="position:absolute;left:0;right:0;bottom:10px;text-align:center;font-weight:900;font-size:14px;line-height:1.1;text-transform:uppercase;color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.5);padding:0 6px">{{ m.name }}</div>
         </a>
@@ -216,7 +216,7 @@ html{scroll-behavior:smooth}
   <div id="top-matchs">
     <div style="display:flex;align-items:center;gap:8px;padding:0 0 12px">
       <span style="width:12px;height:12px;background:#00e1f0;border-radius:3px"></span>
-      <span style="font-size:11px;font-weight:500;flex:1">Top Events</span>
+      <span style="font-size:11px;font-weight:500;flex:1">Top matchs</span>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px">
       <sc-for list="{{ events }}" as="e" hint-placeholder-count="4">
@@ -433,20 +433,20 @@ html{scroll-behavior:smooth}
         <button type="button" onClick="{{ openContact }}" style="background:none;border:0;padding:0;font-size:12px;color:#8b9098;text-align:left" style-hover="color:#00e1f0">Chat en direct</button>
       </div>
       <div style="display:flex;gap:10px">
-        <a href="#" style="width:36px;height:36px;border-radius:50%;background:#5865f2;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">Ds</a>
-        <a href="#" style="width:36px;height:36px;border-radius:50%;background:#2aa3df;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">Tg</a>
-        <a href="#" style="width:36px;height:36px;border-radius:50%;background:#fff;color:#000;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">X</a>
-        <a href="#" style="width:36px;height:36px;border-radius:10px;background:#d6246e;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">Ig</a>
+        <a href="#" aria-label="Cosmobet sur Discord" title="Cosmobet sur Discord" style="width:36px;height:36px;border-radius:50%;background:#5865f2;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">Ds</a>
+        <a href="#" aria-label="Cosmobet sur Telegram" title="Cosmobet sur Telegram" style="width:36px;height:36px;border-radius:50%;background:#2aa3df;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">Tg</a>
+        <a href="#" aria-label="Cosmobet sur X" title="Cosmobet sur X" style="width:36px;height:36px;border-radius:50%;background:#fff;color:#000;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">X</a>
+        <a href="#" aria-label="Cosmobet sur Instagram" title="Cosmobet sur Instagram" style="width:36px;height:36px;border-radius:10px;background:#d6246e;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">Ig</a>
       </div>
     </div>
   </div>
   <div style="border-top:1px solid #2a2d32;border-bottom:1px solid #2a2d32;padding:14px 0;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap">
     <span style="width:24px;height:24px;border-radius:50%;border:2px solid #e3174f;color:#e3174f;font-size:8px;font-weight:700;display:flex;align-items:center;justify-content:center">18+</span>
     <span style="width:22px;height:24px;border-radius:4px 4px 11px 11px;border:2px solid #fff;color:#fff;font-size:10px;display:flex;align-items:center;justify-content:center">✓</span>
-    <span style="font-size:9px;font-weight:500">Attention! It is gambling advertising. Gambling is not suitable for solving financial problems. Please read terms and conditions and play responsibly.</span>
+    <span style="font-size:9px;font-weight:500">Attention ! Ceci est une publicité pour des jeux d'argent. Les jeux d'argent ne sont pas une solution aux problèmes financiers. Veuillez lire les conditions générales et jouer de manière responsable.</span>
   </div>
-  <p style="text-align:center;font-size:12px;line-height:1.5;color:#b7bcc3;margin:30px 0;text-wrap:pretty">Cosmobet is operated by Santeda International B.V., a company incorporated under the laws of Curaçao with Company Number 151296 and is licensed by the Curacao Gaming Authority to offer games of chance under license number OGL/2024/1798/1048 in accordance with the National Ordinance on Offshore Games of Hazard (Landsverordening buitengaatse hazardspelen, P.B. 1993, no. 63) (NOOGH).<br>Santeda International Limited, with registered office at Poreias, 2 3011, Limassol, Cyprus, acts as a payment agent of the license holder and parent company - Santeda International BV.</p>
-  <div style="display:flex;justify-content:center"><div style="width:120px;height:48px;border:1px dashed #3a3d42;border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:ui-monospace,monospace;font-size:8px;color:#6b7078">CGA seal</div></div>
+  <p style="text-align:center;font-size:12px;line-height:1.5;color:#b7bcc3;margin:30px 0;text-wrap:pretty">Cosmobet est exploité par Santeda International B.V., société constituée selon les lois de Curaçao sous le numéro d'immatriculation 151296, titulaire d'une licence de la Curaçao Gaming Authority l'autorisant à proposer des jeux de hasard sous le numéro OGL/2024/1798/1048, conformément à l'ordonnance nationale sur les jeux de hasard offshore (Landsverordening buitengaatse hazardspelen, P.B. 1993, n° 63) (NOOGH).<br>Santeda International Limited, dont le siège social est situé Poreias, 2 3011, Limassol, Chypre, agit en tant qu'agent de paiement du titulaire de la licence et société mère, Santeda International BV.</p>
+  <div style="display:flex;justify-content:center"><img src="uploads/cga-seal.png" alt="Sceau de licence de la Curaçao Gaming Authority (CGA)" width="146" height="92" loading="lazy" style="display:block;border-radius:4px"></div>
 </footer>
 <sc-if value="{{ contactOpen }}">
   <div onClick="{{ closeContact }}" style="position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;padding:16px">
@@ -494,7 +494,7 @@ class Component extends DCLogic {
     const turn = d => this.setState(s => ({ pages: { ...s.pages, [blk.key]: Math.min(total - 1, Math.max(0, (s.pages[blk.key] || 0) + d)) } }));
     const games = blk.games.slice(page * per, page * per + per).map((g, i) => {
       const short = i % 2 === 1;
-      return { ...g, row: short ? 'auto' : 'span 2', alt: g.name + ' — ' + g.vendor, pos: short ? 'center 12%' : 'center', placeholder: !g.img, shade: short && !!g.img, label: !g.img || short ? 'block' : 'none' };
+      return { ...g, row: short ? 'auto' : 'span 2', alt: g.name + ' par ' + g.vendor, pos: short ? 'center 12%' : 'center', placeholder: !g.img, shade: short && !!g.img, label: !g.img || short ? 'block' : 'none' };
     });
     return { title: blk.title, games, prev: () => turn(-1), next: () => turn(1), prevColor: page > 0 ? '#fff' : '#5a5e65', nextColor: page < total - 1 ? '#fff' : '#5a5e65' };
   }
@@ -525,10 +525,10 @@ class Component extends DCLogic {
     ];
     const base = this._base || (this._base = Date.now());
     const ev = [
-      ['Sweden', 'Romania', '25.09 · 18:45', 'B', [1.42, 4.67, 6.6]],
-      ['Montenegro', 'Cyprus', '25.09 · 18:45', 'C', [1.74, 3.48, 4.81]],
-      ['Slovenia', 'Scotland', '26.09 · 13:00', 'B', [2.49, 3.14, 2.85]],
-      ['San Marino', 'Finland', '26.09 · 16:00', 'C', [29.3, 10.04, 1.07]]
+      ['Suède', 'Roumanie', '25.09 · 18:45', 'B', [1.42, 4.67, 6.6]],
+      ['Monténégro', 'Chypre', '25.09 · 18:45', 'C', [1.74, 3.48, 4.81]],
+      ['Slovénie', 'Écosse', '26.09 · 13:00', 'B', [2.49, 3.14, 2.85]],
+      ['Saint-Marin', 'Finlande', '26.09 · 16:00', 'C', [29.3, 10.04, 1.07]]
     ];
     return {
       // Contact popup (no backend yet: submitting only shows the confirmation).
@@ -557,14 +557,14 @@ class Component extends DCLogic {
           { name: 'Aliens Among Us', vendor: 'Hacksaw Gaming', bg: '#0f2233', img: 'uploads/games/aliens-among-us.webp' },
           { name: 'Supernova Galaxy Orbs Hold & Win', vendor: 'Hacksaw Gaming', bg: '#1a1f4a', img: 'uploads/games/supernova-galaxy-orbs.webp' },
           { name: 'Grug Make Fire', vendor: 'Hacksaw Gaming', bg: '#3a2a1a', img: 'uploads/games/grug-make-fire.webp' }] },
-        { key: 'live', title: 'Live Casino', games: [
+        { key: 'live', title: 'Casino en direct', games: [
           { name: 'Blackjack Lobby', vendor: 'Evolution', bg: '#1a2238', img: 'uploads/games/blackjack-lobby.webp' },
           { name: 'Andar Bahar x5000', vendor: 'Winfinity', bg: '#3a1a1a', img: 'uploads/games/andar-bahar-x5000.webp' },
           { name: 'Top Card', vendor: 'Winfinity', bg: '#1a2a1e', img: 'uploads/games/top-card.webp' },
           { name: 'Monaco Blackjack 1', vendor: 'Winfinity', bg: '#123a2c', img: 'uploads/games/monaco-blackjack-1.webp' }] }
       ].map(blk => this.casinoPage(blk)),
-      miniGames: ['Stairs', 'Kings Move', 'Tower Rush', 'Aviafly', 'Roulette'].map((name, i) => ({ name, img: `uploads/mini/mini-${i + 1}.webp` })),
-      events: ev.map(([home, away, time, lg, o]) => ({ home, away, time, league: 'UEFA Nations League. League ' + lg + '.', odds: ['1', 'X', '2'].map((k, i) => ({ k, v: this.fmtOdd(o[i]) })) })),
+      miniGames: ['Stairs', 'Kings Move', 'Tower Rush', 'Aviafly', 'Roulette'].map((name, i) => ({ name, alt: 'Mini-jeu ' + name, img: `uploads/mini/mini-${i + 1}.webp` })),
+      events: ev.map(([home, away, time, lg, o]) => ({ home, away, time, league: "Ligue des nations de l'UEFA. Ligue " + lg + '.', odds: ['1', 'X', '2'].map((k, i) => ({ k, v: this.fmtOdd(o[i]) })) })),
       tournaments: [
         { title: 'Coupes européennes', prize: 'Cadeaux physiques +10\u00a0000', img: 'uploads/tournaments/european-cups.webp', pos: '50% center', edge: '#071d24', bg: 'linear-gradient(90deg,#071d24,#0e3a3e)', cd: this.cd(base + ((127 * 24 + 10) * 60 + 18) * 60000 + 49000) },
         { title: 'Classement paris sportifs', prize: '50\u00a0000\u00a0€', img: 'uploads/tournaments/sports-leaderboard.webp', pos: '50% center', edge: '#06142a', bg: 'linear-gradient(90deg,#06142a,#0e2a4a)', cd: this.cd(base + ((3 * 24 + 10) * 60 + 18) * 60000 + 49000) }
