@@ -1,0 +1,8 @@
+{
+  "redirects": [
+    { "source": "/registration/?", "destination": "https://vodds.com/#register", "statusCode": 307 },
+    { "source": "/login/?", "destination": "https://vodds.com/#login", "statusCode": 307 },
+    { "source": "/promotions/?", "destination": "https://vodds.com/promotions/", "statusCode": 307 },
+    { "source": "/casino/?", "destination": "https://vodds.com/online-casino/", "statusCode": 307 }
+  ]
+}

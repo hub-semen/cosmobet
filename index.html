@@ -101,10 +101,10 @@ html{scroll-behavior:smooth}
 
 <header style="border-bottom:1px solid #1c1e22">
   <div class="hdr" style="max-width:1110px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:16px">
-    <a href="#" style="display:flex;align-items:center"><img class="hdr-logo" src="uploads/cosmobet-logo.png" alt="Cosmobet" style="height:26px;width:auto;display:block"></a>
+    <a href="/" style="display:flex;align-items:center"><img class="hdr-logo" src="uploads/cosmobet-logo.png" alt="Cosmobet" style="height:26px;width:auto;display:block"></a>
     <div class="hdr-actions" style="display:flex;align-items:center;gap:10px;font-size:11px">
-      <button class="hdr-btn" style="background:#e3174f;color:#fff;border:0;border-radius:6px;padding:7px 14px;font-weight:600;font-size:11px">S'inscrire</button>
-      <button class="hdr-btn" style="background:#00e1f0;color:#04181b;border:0;border-radius:6px;padding:7px 14px;font-weight:600;font-size:11px">Connexion</button>
+      <a href="/registration/" class="hdr-btn" style="display:inline-block;text-decoration:none;background:#e3174f;color:#fff;border-radius:6px;padding:7px 14px;font-weight:600;font-size:11px">S'inscrire</a>
+      <a href="/login/" class="hdr-btn" style="display:inline-block;text-decoration:none;background:#00e1f0;color:#04181b;border-radius:6px;padding:7px 14px;font-weight:600;font-size:11px">Connexion</a>
       <span role="img" aria-label="Français" title="Français" style="display:flex;width:24px;height:16px;border-radius:3px;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.2)"><span style="flex:1;background:#0055a4"></span><span style="flex:1;background:#fff"></span><span style="flex:1;background:#ef4135"></span></span>
     </div>
   </div>
@@ -121,7 +121,7 @@ html{scroll-behavior:smooth}
   <div style="position:relative">
     <div style="position:relative;aspect-ratio:1991/500;border-radius:10px;overflow:hidden;background:#050608">
       <sc-for list="{{ slides }}" as="s" hint-placeholder-count="5">
-        <a href="#" style="position:absolute;inset:0;opacity:{{ s.op }};pointer-events:{{ s.pe }};transition:opacity .5s"><img src="{{ s.src }}" alt="{{ s.alt }}" loading="{{ s.loading }}" style="width:100%;height:100%;object-fit:cover;display:block"></a>
+        <a href="{{ s.href }}" style="position:absolute;inset:0;opacity:{{ s.op }};pointer-events:{{ s.pe }};transition:opacity .5s"><img src="{{ s.src }}" alt="{{ s.alt }}" loading="{{ s.loading }}" style="width:100%;height:100%;object-fit:cover;display:block"></a>
       </sc-for>
     </div>
     <button class="hero-nav hero-prev" onClick="{{ prevSlide }}" aria-label="Précédent" style="position:absolute;left:22px;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;background:rgba(0,0,0,.7);border:1px solid #3a3d42;color:#fff;font-size:16px">‹</button>
@@ -165,7 +165,7 @@ html{scroll-behavior:smooth}
         </div>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:98px 98px;gap:6px">
           <sc-for list="{{ b.games }}" as="g" hint-placeholder-count="4">
-            <div style="grid-row:{{ g.row }};border-radius:6px;overflow:hidden;position:relative;background:{{ g.bg }}" style-hover="filter:brightness(1.15)">
+            <a href="/casino/" style="display:block;grid-row:{{ g.row }};border-radius:6px;overflow:hidden;position:relative;background:{{ g.bg }}" style-hover="filter:brightness(1.15)">
               <sc-if value="{{ g.img }}"><img src="{{ g.img }}" alt="{{ g.alt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{ g.pos }};display:block"></sc-if>
               <sc-if value="{{ g.placeholder }}">
                 <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 8px,transparent 8px 16px)"></div>
@@ -173,7 +173,7 @@ html{scroll-behavior:smooth}
               </sc-if>
               <sc-if value="{{ g.shade }}"><div style="position:absolute;inset:auto 0 0 0;height:60%;background:linear-gradient(transparent,rgba(0,0,0,.75))"></div></sc-if>
               <div style="display:{{ g.label }};position:absolute;left:0;right:0;bottom:6px;text-align:center;font-weight:900;font-size:12px;line-height:1.1;text-transform:uppercase;color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.5);padding:0 4px">{{ g.name }}<div style="font-size:7px;font-weight:700;opacity:.85">{{ g.vendor }}</div></div>
-            </div>
+            </a>
           </sc-for>
         </div>
       </div>
@@ -200,7 +200,7 @@ html{scroll-behavior:smooth}
     </div>
     <div class="mini-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(140px,40%),1fr));gap:24px;padding:0 10px">
       <sc-for list="{{ miniGames }}" as="m" hint-placeholder-count="5">
-        <a href="#" style="display:block;position:relative;aspect-ratio:315/388;border-radius:12px;overflow:hidden;background:#16181c;box-shadow:0 10px 24px rgba(0,0,0,.5);transition:transform .2s" style-hover="transform:translateY(-3px)">
+        <a href="/casino/" style="display:block;position:relative;aspect-ratio:315/388;border-radius:12px;overflow:hidden;background:#16181c;box-shadow:0 10px 24px rgba(0,0,0,.5);transition:transform .2s" style-hover="transform:translateY(-3px)">
           <img src="{{ m.img }}" alt="{{ m.alt }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
           <div style="position:absolute;inset:auto 0 0 0;height:50%;background:linear-gradient(transparent,rgba(0,0,0,.7))"></div>
           <div style="position:absolute;left:0;right:0;bottom:10px;text-align:center;font-weight:900;font-size:14px;line-height:1.1;text-transform:uppercase;color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.5);padding:0 6px">{{ m.name }}</div>
@@ -251,7 +251,7 @@ html{scroll-behavior:smooth}
           </div>
           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4px">
             <sc-for list="{{ e.odds }}" as="o">
-              <button style="background:#1a1c20;border:0;border-radius:4px;padding:5px 0;color:#e8eaed;font-size:12px;line-height:1.3" style-hover="background:#00e1f0;color:#04181b"><div style="font-size:10px;color:#00e1f0">{{ o.k }}</div>{{ o.v }}</button>
+              <a href="/registration/" style="display:block;text-align:center;text-decoration:none;background:#1a1c20;border-radius:4px;padding:5px 0;color:#e8eaed;font-size:12px;line-height:1.3" style-hover="background:#00e1f0;color:#04181b"><div style="font-size:10px;color:#00e1f0">{{ o.k }}</div>{{ o.v }}</a>
             </sc-for>
           </div>
         </div>
@@ -282,7 +282,7 @@ html{scroll-behavior:smooth}
                 <div style="background:rgba(0,0,0,.45);border-radius:4px;padding:2px 6px;min-width:36px"><div style="font-size:19px;font-weight:600;color:#00e1f0;line-height:1.2">{{ c.v }}</div><div style="font-size:9px;color:#cfd3d8">{{ c.l }}</div></div>
               </sc-for>
             </div>
-            <button style="margin-top:16px;background:#00e1f0;color:#04181b;border:0;border-radius:6px;padding:8px 22px;font-size:14px;font-weight:600" style-hover="background:#7ff3fa">Participer</button>
+            <a href="/promotions/" style="display:inline-block;text-decoration:none;margin-top:16px;background:#00e1f0;color:#04181b;border-radius:6px;padding:8px 22px;font-size:14px;font-weight:600" style-hover="background:#7ff3fa">Participer</a>
           </div>
         </div>
       </sc-for>
@@ -331,7 +331,7 @@ html{scroll-behavior:smooth}
       </sc-for>
     </div>
     <div style="display:flex;justify-content:center;padding:26px 0 8px">
-      <button style="background:#00e1f0;color:#04181b;border:0;border-radius:6px;padding:8px 22px;font-size:14px;font-weight:600" style-hover="background:#7ff3fa">J'en profite</button>
+      <a href="/promotions/" style="display:inline-block;text-decoration:none;background:#00e1f0;color:#04181b;border-radius:6px;padding:8px 22px;font-size:14px;font-weight:600" style-hover="background:#7ff3fa">J'en profite</a>
     </div>
   </div>
     <div id="bienvenue" class="seo-card">
@@ -380,7 +380,7 @@ html{scroll-behavior:smooth}
         <h3 id="paiements">Moyens de paiement, dépôts et retraits</h3>
         <p>Pour effectuer des transactions avec le casino en ligne CosmoBet, vous devez disposer d'une carte Visa ou MasterCard. Celle-ci doit être au nom du client de l'établissement. Tout paiement effectué à partir des coordonnées bancaires d'une autre personne sera refusé immédiatement ou ultérieurement, après vérification. Il est possible d'effectuer un dépôt via Google Pay ou Apple Pay.</p>
         <p>Dans la plupart des cas, l'argent est crédité presque instantanément dans Cosmobet. Veuillez noter que certaines banques fixent des limites pour les virements vers les casinos en ligne.</p>
-        <a href="#" class="pay-banner">
+        <a href="/login/" class="pay-banner">
           <img src="uploads/promos/payments.svg" alt="" style="width:150px;max-width:45%;height:auto;flex:none">
           <div style="min-width:0">
             <div class="pay-banner-title" style="font-weight:900;font-style:italic;font-size:19px;line-height:1.1;text-transform:uppercase;color:#fff">Dépôts instantanés</div>
@@ -540,11 +540,11 @@ class Component extends DCLogic {
   }
   renderVals() {
     const slides = [
-      { src: 'uploads/banner-gains-hantes.webp', alt: 'BGaming — Gains hantés : 100 000 € en cash drops' },
-      { src: 'uploads/banner-tours-gratuits.webp', alt: "Jusqu'à 1000 tours gratuits + 400% de bonus de bienvenue" },
-      { src: 'uploads/banner-pari-combine.webp', alt: "200% pari combiné : jusqu'à 200 € de pari gratuit par jour" },
-      { src: 'uploads/banner-cosmo-clash.webp', alt: 'Cosmo Clash : 50 000 €, classement paris sportifs' },
-      { src: 'uploads/banner-chicken-race.webp', alt: "Cashback Chicken Race : jusqu'à 50 tours gratuits" }
+      { src: 'uploads/banner-gains-hantes.webp', href: '/promotions/', alt: 'BGaming — Gains hantés : 100 000 € en cash drops' },
+      { src: 'uploads/banner-tours-gratuits.webp', href: '/registration/', alt: "Jusqu'à 1000 tours gratuits + 400% de bonus de bienvenue" },
+      { src: 'uploads/banner-pari-combine.webp', href: '/promotions/', alt: "200% pari combiné : jusqu'à 200 € de pari gratuit par jour" },
+      { src: 'uploads/banner-cosmo-clash.webp', href: '/promotions/', alt: 'Cosmo Clash : 50 000 €, classement paris sportifs' },
+      { src: 'uploads/banner-chicken-race.webp', href: '/promotions/', alt: "Cashback Chicken Race : jusqu'à 50 tours gratuits" }
     ];
     const base = this._base || (this._base = Date.now());
     const ev = [
