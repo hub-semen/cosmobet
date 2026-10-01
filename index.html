@@ -64,11 +64,34 @@ html{scroll-behavior:smooth}
 .pay-banner{flex:1;min-height:170px;margin-top:6px;display:flex;align-items:center;gap:14px;padding:16px;border-radius:8px;border:1px solid #1f3a3d;background:radial-gradient(circle at 25% 40%,#123d45,#0e2b2f 45%,#16181c 100%);color:inherit}
 @media (max-width:600px){.pay-banner{gap:10px;padding:14px 12px}.pay-banner-title{font-size:15px!important}}
 .pay-banner:hover{border-color:#00e1f0;color:inherit}
+.mini-nav{display:none}
 .cf-label{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:500;color:#cfd3d8}
 .cf-input{background:#0f1012;border:1px solid #2a2d32;border-radius:6px;padding:10px 12px;color:#fff;font:inherit;font-size:14px;outline:none}
 .cf-input:focus{border-color:#00e1f0;box-shadow:0 0 0 2px rgba(0,225,240,.2)}
 .cf-check{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.45;color:#cfd3d8;cursor:pointer}
 .cf-check input{margin:2px 0 0;width:16px;height:16px;flex:none;accent-color:#00e1f0}
+@media (max-width:600px){
+  .hdr{padding:10px 12px!important;gap:8px!important}
+  .hdr-logo{height:20px!important}
+  .hdr-actions{gap:6px!important}
+  .hdr-btn{padding:6px 9px!important;font-size:11px!important}
+  .main-nav{gap:20px!important;scrollbar-width:none}
+  .main-nav::-webkit-scrollbar{display:none}
+  .mini-grid{display:flex!important;gap:12px!important;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px!important;scrollbar-width:none}
+  .mini-grid::-webkit-scrollbar{display:none}
+  .mini-grid > *{flex:0 0 40%;scroll-snap-align:start}
+  .mini-nav{display:inline-block!important}
+  .ev-card{padding-bottom:10px!important}
+  .tour-card{height:auto!important;grid-template-columns:1fr!important;grid-template-rows:130px auto}
+  .tour-card > div:last-child{padding:14px 10px 18px!important}
+  .promo-grid{grid-template-columns:repeat(2,1fr)!important}
+  .promo-grid > div > div{height:140px!important}
+  .prov-strip{justify-content:center!important;gap:12px 20px!important;padding:26px 0!important}
+  .promo-grid img{width:56px!important;height:56px!important;top:10px!important}
+  .promo-grid > div > div > div:last-child > div:first-child{font-size:13px!important}
+  .warn-text{font-size:11px!important;line-height:1.4;text-align:center}
+}
+@media (max-width:380px){.hdr-logo{height:16px!important}.hdr-btn{padding:6px 7px!important;font-size:10px!important}.hdr-actions{gap:5px!important}}
 @media (max-width:900px){.pay-strip{flex-wrap:wrap!important;justify-content:center!important;gap:12px 22px!important}}
 @media (max-width:600px){.hero-nav{width:26px!important;height:26px!important;font-size:13px!important}.hero-prev{left:6px!important}.hero-next{right:6px!important}}
 @media (max-width:600px){.seo-card{padding:18px 16px}.seo h2{font-size:19px}.seo-table td:first-child{white-space:normal}}
@@ -77,16 +100,16 @@ html{scroll-behavior:smooth}
 <div style="min-height:100vh;background:#0b0c0e">
 
 <header style="border-bottom:1px solid #1c1e22">
-  <div style="max-width:1110px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:16px">
-    <a href="#" style="display:flex;align-items:center"><img src="uploads/cosmobet-logo.png" alt="Cosmobet" style="height:26px;width:auto;display:block"></a>
-    <div style="display:flex;align-items:center;gap:10px;font-size:11px">
-      <button style="background:#e3174f;color:#fff;border:0;border-radius:6px;padding:7px 14px;font-weight:600;font-size:11px">S'inscrire</button>
-      <button style="background:#00e1f0;color:#04181b;border:0;border-radius:6px;padding:7px 14px;font-weight:600;font-size:11px">Connexion</button>
+  <div class="hdr" style="max-width:1110px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+    <a href="#" style="display:flex;align-items:center"><img class="hdr-logo" src="uploads/cosmobet-logo.png" alt="Cosmobet" style="height:26px;width:auto;display:block"></a>
+    <div class="hdr-actions" style="display:flex;align-items:center;gap:10px;font-size:11px">
+      <button class="hdr-btn" style="background:#e3174f;color:#fff;border:0;border-radius:6px;padding:7px 14px;font-weight:600;font-size:11px">S'inscrire</button>
+      <button class="hdr-btn" style="background:#00e1f0;color:#04181b;border:0;border-radius:6px;padding:7px 14px;font-weight:600;font-size:11px">Connexion</button>
       <span role="img" aria-label="Français" title="Français" style="display:flex;width:24px;height:16px;border-radius:3px;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.2)"><span style="flex:1;background:#0055a4"></span><span style="flex:1;background:#fff"></span><span style="flex:1;background:#ef4135"></span></span>
     </div>
   </div>
   <nav style="border-top:1px solid #1c1e22">
-    <div style="max-width:1110px;margin:0 auto;padding:0 16px;display:flex;justify-content:space-between;gap:12px;overflow-x:auto">
+    <div class="main-nav" style="max-width:1110px;margin:0 auto;padding:0 16px;display:flex;justify-content:space-between;gap:12px;overflow-x:auto">
       <sc-for list="{{ nav }}" as="n" hint-placeholder-count="10">
         <a href="{{ n.href }}" style="position:relative;color:#fff;font-weight:700;font-size:12px;padding:16px 0;white-space:nowrap" style-hover="color:#00e1f0">{{ n.label }}<sc-if value="{{ n.isNew }}"><span style="position:absolute;top:2px;left:50%;transform:translateX(-50%);background:#e3174f;color:#fff;font-size:8px;padding:0 5px;border-radius:3px">Nouveau</span></sc-if></a>
       </sc-for>
@@ -173,9 +196,9 @@ html{scroll-behavior:smooth}
   <div id="mini-jeux">
     <div style="display:flex;align-items:center;gap:8px;padding:0 10px 18px">
       <span style="font-weight:600;font-size:14px;flex:1">Mini-jeux</span>
-      <span style="color:#fff;font-size:16px;padding:0 10px">‹</span><span style="color:#fff;font-size:16px;padding:0 4px">›</span>
+      <button class="mini-nav" onClick="{{ miniPrev }}" aria-label="Mini-jeux précédents" style="background:transparent;border:0;color:#fff;font-size:16px;padding:0 10px">‹</button><button class="mini-nav" onClick="{{ miniNext }}" aria-label="Mini-jeux suivants" style="background:transparent;border:0;color:#fff;font-size:16px;padding:0 4px">›</button>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(140px,40%),1fr));gap:24px;padding:0 10px">
+    <div class="mini-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(140px,40%),1fr));gap:24px;padding:0 10px">
       <sc-for list="{{ miniGames }}" as="m" hint-placeholder-count="5">
         <a href="#" style="display:block;position:relative;aspect-ratio:315/388;border-radius:12px;overflow:hidden;background:#16181c;box-shadow:0 10px 24px rgba(0,0,0,.5);transition:transform .2s" style-hover="transform:translateY(-3px)">
           <img src="{{ m.img }}" alt="{{ m.alt }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
@@ -220,7 +243,7 @@ html{scroll-behavior:smooth}
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px">
       <sc-for list="{{ events }}" as="e" hint-placeholder-count="4">
-        <div style="border:1px solid #1f3a3d;border-radius:6px;padding:8px 8px 44px;background:linear-gradient(180deg,#0e2b2f,#0b0c0e 80%)">
+        <div class="ev-card" style="border:1px solid #1f3a3d;border-radius:6px;padding:8px 8px 44px;background:linear-gradient(180deg,#0e2b2f,#0b0c0e 80%)">
           <div style="text-align:center;font-size:11px;font-weight:600;color:#00e1f0">{{ e.league }}</div>
           <div style="text-align:center;font-size:12px;margin:6px 0 10px">{{ e.time }}</div>
           <div style="display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:6px;font-size:13px;font-weight:600;margin-bottom:10px">
@@ -249,7 +272,7 @@ html{scroll-behavior:smooth}
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:6px">
       <sc-for list="{{ tournaments }}" as="t" hint-placeholder-count="2">
-        <div style="position:relative;height:226px;border-radius:6px;overflow:hidden;background:{{ t.bg }};display:grid;grid-template-columns:45% 55%">
+        <div class="tour-card" style="position:relative;height:226px;border-radius:6px;overflow:hidden;background:{{ t.bg }};display:grid;grid-template-columns:45% 55%">
           <div style="position:relative;overflow:hidden"><img src="{{ t.img }}" alt="{{ t.title }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{ t.pos }};display:block"><div style="position:absolute;inset:0 0 0 auto;width:30%;background:linear-gradient(90deg,transparent,{{ t.edge }})"></div></div>
           <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px">
             <div style="font-size:15px;font-weight:500;line-height:1.4;max-width:200px">{{ t.title }}</div>
@@ -293,7 +316,7 @@ html{scroll-behavior:smooth}
       <span style="width:18px;height:18px;border-radius:4px;background:#00e1f0;opacity:.85"></span>
       <span style="font-weight:600;font-size:15px;flex:1">Promotions</span>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px">
+    <div class="promo-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px">
       <sc-for list="{{ promos }}" as="p" hint-placeholder-count="4">
         <div>
           <div style="position:relative;height:160px;border-radius:6px;overflow:hidden;background:{{ p.bg }}">
@@ -301,7 +324,7 @@ html{scroll-behavior:smooth}
             <img src="{{ p.icon }}" alt="" style="position:absolute;top:12px;left:50%;transform:translateX(-50%);width:76px;height:76px;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))">
             <div style="position:absolute;left:0;right:0;bottom:10px;text-align:center;padding:0 4px">
               <div style="font-weight:900;font-style:italic;font-size:15px;line-height:1.05;text-transform:uppercase;color:#fff">{{ p.title }}</div>
-              <div style="font-weight:700;font-style:italic;font-size:10px;text-transform:uppercase;color:#00e1f0;margin-top:4px">{{ p.sub }}</div>
+              <div style="font-weight:700;font-style:italic;font-size:10px;line-height:1.3;text-transform:uppercase;color:#00e1f0;margin-top:4px">{{ p.sub }}</div>
             </div>
           </div>
         </div>
@@ -413,7 +436,7 @@ html{scroll-behavior:smooth}
 </main>
 
 <footer style="max-width:938px;margin:0 auto;padding:0 16px 60px">
-  <div style="padding:34px 0;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;border-bottom:1px solid #1c1e22">
+  <div class="prov-strip" style="padding:34px 0;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;border-bottom:1px solid #1c1e22">
     <sc-for list="{{ providers }}" as="x" hint-placeholder-count="11">
       <span style="font-weight:700;font-size:12px;color:#cfd3d8;text-transform:uppercase;letter-spacing:.5px">{{ x }}</span>
     </sc-for>
@@ -443,7 +466,7 @@ html{scroll-behavior:smooth}
   <div style="border-top:1px solid #2a2d32;border-bottom:1px solid #2a2d32;padding:14px 0;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap">
     <span style="width:24px;height:24px;border-radius:50%;border:2px solid #e3174f;color:#e3174f;font-size:8px;font-weight:700;display:flex;align-items:center;justify-content:center">18+</span>
     <span style="width:22px;height:24px;border-radius:4px 4px 11px 11px;border:2px solid #fff;color:#fff;font-size:10px;display:flex;align-items:center;justify-content:center">✓</span>
-    <span style="font-size:9px;font-weight:500">Attention ! Ceci est une publicité pour des jeux d'argent. Les jeux d'argent ne sont pas une solution aux problèmes financiers. Veuillez lire les conditions générales et jouer de manière responsable.</span>
+    <span class="warn-text" style="font-size:9px;font-weight:500">Attention ! Ceci est une publicité pour des jeux d'argent. Les jeux d'argent ne sont pas une solution aux problèmes financiers. Veuillez lire les conditions générales et jouer de manière responsable.</span>
   </div>
   <p style="text-align:center;font-size:12px;line-height:1.5;color:#b7bcc3;margin:30px 0;text-wrap:pretty">Cosmobet est exploité par Santeda International B.V., société constituée selon les lois de Curaçao sous le numéro d'immatriculation 151296, titulaire d'une licence de la Curaçao Gaming Authority l'autorisant à proposer des jeux de hasard sous le numéro OGL/2024/1798/1048, conformément à l'ordonnance nationale sur les jeux de hasard offshore (Landsverordening buitengaatse hazardspelen, P.B. 1993, n° 63) (NOOGH).<br>Santeda International Limited, dont le siège social est situé Poreias, 2 3011, Limassol, Chypre, agit en tant qu'agent de paiement du titulaire de la licence et société mère, Santeda International BV.</p>
   <div style="display:flex;justify-content:center"><img src="uploads/cga-seal.png" alt="Sceau de licence de la Curaçao Gaming Authority (CGA)" width="73" height="46" loading="lazy" style="display:block;border-radius:4px"></div>
@@ -539,6 +562,9 @@ class Component extends DCLogic {
       closeContact: () => this.setState({ contactOpen: false }),
       stopClick: e => e.stopPropagation(),
       submitContact: e => { e.preventDefault(); this.setState({ contactSent: true }); },
+      // Mini-games scroll as a swipeable strip on mobile; arrows nudge it.
+      miniPrev: () => document.querySelector('.mini-grid')?.scrollBy({ left: -240, behavior: 'smooth' }),
+      miniNext: () => document.querySelector('.mini-grid')?.scrollBy({ left: 240, behavior: 'smooth' }),
       nav: [
         ['Paris sportifs', '#paris-sportifs'], ['Top matchs', '#top-matchs'], ['Casino', '#casino'], ['Casino en direct', '#casino-en-direct'],
         ['Mini-jeux', '#mini-jeux'], ['Tournois', '#tournois'], ['Promotions', '#promotions'], ['Bonus', '#bienvenue'],
