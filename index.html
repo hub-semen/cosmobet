@@ -483,7 +483,6 @@ class Component extends DCLogic {
       { src: 'uploads/banner-chicken-race.webp', alt: "Cashback Chicken Race : jusqu'à 50 tours gratuits" }
     ];
     const base = this._base || (this._base = Date.now());
-    const pal = ['#8a2a1c', '#1f6fb0', '#a4702a', '#c85a14', '#6a2f7a', '#7a3b12', '#4b2a8a', '#b01a4a'];
     const ev = [
       ['Sweden', 'Romania', '25.09 · 18:45', 'B', [1.42, 4.67, 6.6]],
       ['Montenegro', 'Cyprus', '25.09 · 18:45', 'C', [1.74, 3.48, 4.81]],
@@ -506,10 +505,10 @@ class Component extends DCLogic {
           { name: 'Supernova Galaxy Orbs Hold & Win', vendor: 'Hacksaw Gaming', bg: '#1a1f4a', img: 'uploads/games/supernova-galaxy-orbs.webp' },
           { name: 'Grug Make Fire', vendor: 'Hacksaw Gaming', bg: '#3a2a1a', img: 'uploads/games/grug-make-fire.webp' }] },
         { key: 'live', title: 'Live Casino', games: [
-          { name: 'Gravity Sic Bo', vendor: 'Ironic21', bg: pal[4] },
-          { name: 'Lucky7', vendor: 'Bet Games', bg: pal[5] },
-          { name: 'Live Roulette European', vendor: 'Platipus', bg: pal[7] },
-          { name: 'Blackjack 8', vendor: 'Lucky Streak', bg: pal[6] }] }
+          { name: 'Blackjack Lobby', vendor: 'Evolution', bg: '#1a2238', img: 'uploads/games/blackjack-lobby.webp' },
+          { name: 'Andar Bahar x5000', vendor: 'Winfinity', bg: '#3a1a1a', img: 'uploads/games/andar-bahar-x5000.webp' },
+          { name: 'Top Card', vendor: 'Winfinity', bg: '#1a2a1e', img: 'uploads/games/top-card.webp' },
+          { name: 'Monaco Blackjack 1', vendor: 'Winfinity', bg: '#123a2c', img: 'uploads/games/monaco-blackjack-1.webp' }] }
       ].map(blk => this.casinoPage(blk)),
       miniGames: [['Hilo Joker', '#9aa3b5'], ['Roulette', '#4b2aa0'], ['Minesweeper XY', '#1d5c8a'], ['Sweet Keno', '#3f9a6a'], ['Aviamasters', '#2b74c9'], ['Magic Wheel', '#6a2a8a']].map(([name, bg]) => ({ name, bg })),
       events: ev.map(([home, away, time, lg, o]) => ({ home, away, time, league: 'UEFA Nations League. League ' + lg + '.', odds: ['1', 'X', '2'].map((k, i) => ({ k, v: this.fmtOdd(o[i]) })) })),
