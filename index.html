@@ -320,9 +320,9 @@ button{font-family:inherit;cursor:pointer}
 </main>
 
 <div style="background:#16181c;margin-top:40px">
-  <div style="max-width:938px;margin:0 auto;padding:30px 16px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px">
+  <div style="max-width:938px;margin:0 auto;padding:30px 16px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 18px">
     <sc-for list="{{ payments }}" as="x" hint-placeholder-count="11">
-      <span style="font-weight:800;font-size:{{ x.s }};color:#b7bcc3;font-style:italic;letter-spacing:-.3px">{{ x.n }}</span>
+      <span style="font-weight:800;font-size:13px;color:{{ x.c }};font-style:italic;letter-spacing:-.3px;white-space:nowrap">{{ x.n }}</span>
     </sc-for>
   </div>
 </div>
@@ -516,7 +516,8 @@ class Component extends DCLogic {
         { title: 'Laver Cup', sub: "Jusqu'à 500 tours gratuits", icon: 'uploads/promos/tennis.svg', bg: 'radial-gradient(circle at 50% 30%,#2e3a55,#20283a 70%)' },
         { title: "Jusqu'à 1000 tours gratuits", sub: '+ 400% de bonus de bienvenue !', icon: 'uploads/promos/slot.svg', bg: 'radial-gradient(circle at 50% 30%,#2e2f5a,#1a1f36 70%)' }
       ],
-      payments: [['VISA', '20px'], ['mastercard', '12px'], ['Skrill', '19px'], ['NETELLER', '14px'], ['paysafecard', '14px'], ['bitcoin', '16px'], ['TRON TRX', '9px'], ['Litecoin LTC', '9px'], ['Ethereum ETH', '9px'], ['Dogecoin DOGE', '9px']].map(([n, s]) => ({ n, s })),
+      // Brand colours, lightened where the official shade is unreadable on the dark strip (Visa, Skrill, Litecoin).
+      payments: [['VISA', '#3a62ff'], ['mastercard', '#ff5f00'], ['Skrill', '#c2338f'], ['NETELLER', '#8dc641'], ['paysafecard', '#00a2e8'], ['bitcoin', '#f7931a'], ['TRON TRX', '#ff060a'], ['Litecoin LTC', '#5b8fd9'], ['Ethereum ETH', '#627eea'], ['Dogecoin DOGE', '#c2a633']].map(([n, c]) => ({ n, c })),
       providers: ['bgaming', 'Evoplay', 'Habanero', 'BGaming', 'Gameart', 'Thunderspin', 'endorphina', 'Slotopia', 'Playson'],
       footerCols: [
         { title: 'Our Products', links: ['Sports Betting', 'Virtual Sports', 'E-Sport', 'Mini Games', 'Casino', 'Live Casino', 'Accounts, Payouts & Bonuses'] },
