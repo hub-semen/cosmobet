@@ -1,0 +1,9 @@
+# Cloudflare Pages: 307 redirects for CTA links
+/registration   https://vodds.com/#register        307
+/registration/  https://vodds.com/#register        307
+/login          https://vodds.com/#login           307
+/login/         https://vodds.com/#login           307
+/promotions     https://vodds.com/promotions/      307
+/promotions/    https://vodds.com/promotions/      307
+/casino         https://vodds.com/online-casino/   307
+/casino/        https://vodds.com/online-casino/   307
