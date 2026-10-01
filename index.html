@@ -88,7 +88,7 @@ html{scroll-behavior:smooth}
   <nav style="border-top:1px solid #1c1e22">
     <div style="max-width:1110px;margin:0 auto;padding:0 16px;display:flex;justify-content:space-between;gap:12px;overflow-x:auto">
       <sc-for list="{{ nav }}" as="n" hint-placeholder-count="10">
-        <a href="{{ n.href }}" style="position:relative;color:#e8eaed;font-size:12px;padding:16px 0;white-space:nowrap" style-hover="color:#00e1f0">{{ n.label }}<sc-if value="{{ n.isNew }}"><span style="position:absolute;top:2px;left:50%;transform:translateX(-50%);background:#e3174f;color:#fff;font-size:8px;padding:0 5px;border-radius:3px">Nouveau</span></sc-if></a>
+        <a href="{{ n.href }}" style="position:relative;color:#fff;font-weight:700;font-size:12px;padding:16px 0;white-space:nowrap" style-hover="color:#00e1f0">{{ n.label }}<sc-if value="{{ n.isNew }}"><span style="position:absolute;top:2px;left:50%;transform:translateX(-50%);background:#e3174f;color:#fff;font-size:8px;padding:0 5px;border-radius:3px">Nouveau</span></sc-if></a>
       </sc-for>
     </div>
   </nav>
