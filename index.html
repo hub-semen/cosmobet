@@ -302,11 +302,12 @@ button{font-family:inherit;cursor:pointer}
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px">
       <sc-for list="{{ promos }}" as="p" hint-placeholder-count="4">
         <div>
-          <div style="position:relative;height:126px;border-radius:6px;overflow:hidden;background:{{ p.bg }}">
+          <div style="position:relative;height:160px;border-radius:6px;overflow:hidden;background:{{ p.bg }}">
             <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 8px,transparent 8px 16px)"></div>
+            <img src="{{ p.icon }}" alt="" style="position:absolute;top:12px;left:50%;transform:translateX(-50%);width:76px;height:76px;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))">
             <div style="position:absolute;left:0;right:0;bottom:10px;text-align:center;padding:0 4px">
               <div style="font-weight:900;font-style:italic;font-size:15px;line-height:1.05;text-transform:uppercase;color:#fff">{{ p.title }}</div>
-              <div style="font-weight:700;font-style:italic;font-size:8px;text-transform:uppercase;color:#00e1f0;margin-top:3px">{{ p.sub }}</div>
+              <div style="font-weight:700;font-style:italic;font-size:10px;text-transform:uppercase;color:#00e1f0;margin-top:4px">{{ p.sub }}</div>
             </div>
           </div>
         </div>
@@ -510,10 +511,10 @@ class Component extends DCLogic {
         { title: 'Classement paris sportifs', prize: '50\u00a0000\u00a0€', img: 'uploads/tournaments/sports-leaderboard.webp', pos: '50% center', edge: '#06142a', bg: 'linear-gradient(90deg,#06142a,#0e2a4a)', cd: this.cd(base + ((3 * 24 + 10) * 60 + 18) * 60000 + 49000) }
       ],
       promos: [
-        { title: 'Cash Prizes & Physical Gifts', sub: '+200% express odds leaderboard', bg: '#1b2a26' },
-        { title: 'Nations League Quest', sub: '5 days, 110 in free bets', bg: '#1a2234' },
-        { title: 'Laver Cup', sub: 'Earn up to 500 free spins', bg: '#20283a' },
-        { title: 'Up to 1000 Freespins', sub: '+ 400% welcome boost!', bg: '#1a1f36' }
+        { title: 'Prix en cash & cadeaux', sub: 'Classement cotes combinées +200%', icon: 'uploads/promos/gift.svg', bg: 'radial-gradient(circle at 50% 30%,#2a4a40,#1b2a26 70%)' },
+        { title: 'Quête Ligue des Nations', sub: '5 jours, 110 paris gratuits', icon: 'uploads/promos/football.svg', bg: 'radial-gradient(circle at 50% 30%,#2a3a5a,#1a2234 70%)' },
+        { title: 'Laver Cup', sub: "Jusqu'à 500 tours gratuits", icon: 'uploads/promos/tennis.svg', bg: 'radial-gradient(circle at 50% 30%,#2e3a55,#20283a 70%)' },
+        { title: "Jusqu'à 1000 tours gratuits", sub: '+ 400% de bonus de bienvenue !', icon: 'uploads/promos/slot.svg', bg: 'radial-gradient(circle at 50% 30%,#2e2f5a,#1a1f36 70%)' }
       ],
       payments: [['VISA', '20px'], ['mastercard', '12px'], ['Skrill', '19px'], ['NETELLER', '14px'], ['paysafecard', '14px'], ['bitcoin', '16px'], ['TRON TRX', '9px'], ['Litecoin LTC', '9px'], ['Ethereum ETH', '9px'], ['Dogecoin DOGE', '9px']].map(([n, s]) => ({ n, s })),
       providers: ['bgaming', 'Evoplay', 'Habanero', 'BGaming', 'Gameart', 'Thunderspin', 'endorphina', 'Slotopia', 'Playson'],
