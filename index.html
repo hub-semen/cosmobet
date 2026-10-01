@@ -59,6 +59,7 @@ button{font-family:inherit;cursor:pointer}
 .seo-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
 .seo-btns a{background:#24272c;color:#fff;border-radius:6px;padding:9px 18px;font-size:13px;font-weight:600}
 .seo-btns a:hover{background:#00e1f0;color:#04181b}
+@media (max-width:900px){.pay-strip{flex-wrap:wrap!important;justify-content:center!important;gap:12px 22px!important}}
 @media (max-width:600px){.hero-nav{width:26px!important;height:26px!important;font-size:13px!important}.hero-prev{left:6px!important}.hero-next{right:6px!important}}
 @media (max-width:600px){.seo-card{padding:18px 16px}.seo h2{font-size:19px}.seo-table td:first-child{white-space:normal}}
 </style>
@@ -69,10 +70,9 @@ button{font-family:inherit;cursor:pointer}
   <div style="max-width:1110px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:16px">
     <a href="#" style="display:flex;align-items:center"><img src="uploads/cosmobet-logo.png" alt="Cosmobet" style="height:26px;width:auto;display:block"></a>
     <div style="display:flex;align-items:center;gap:10px;font-size:11px">
-      <a href="#" style="color:#9aa0a8">Forgot Password?</a>
       <button style="background:#e3174f;color:#fff;border:0;border-radius:6px;padding:7px 14px;font-weight:600;font-size:11px">Sign Up</button>
       <button style="background:#00e1f0;color:#04181b;border:0;border-radius:6px;padding:7px 14px;font-weight:600;font-size:11px">Log In</button>
-      <span style="color:#cfd3d8;display:flex;align-items:center;gap:4px">EN <span style="font-size:8px">▼</span></span>
+      <span role="img" aria-label="Français" title="Français" style="display:flex;width:24px;height:16px;border-radius:3px;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.2)"><span style="flex:1;background:#0055a4"></span><span style="flex:1;background:#fff"></span><span style="flex:1;background:#ef4135"></span></span>
     </div>
   </div>
   <nav style="border-top:1px solid #1c1e22">
@@ -272,9 +272,6 @@ button{font-family:inherit;cursor:pointer}
       <h2>Paris combinés et options avancées dans Cosmobet</h2>
       <p>En regroupant plusieurs sélections sur un seul coupon de pari exponentiel, vos paris combinés peuvent décupler vos gains potentiels. L'ajout d'options innovantes telles que « Acca Boost » augmente automatiquement vos chances de gagner lorsque vous ajoutez des sélections éligibles. Par ailleurs, la fonction « Cash Out » dans Cosmobet vous permet de maîtriser la gestion de vos risques : vous pouvez retirer votre mise alors que le pari est encore en cours, ce qui vous permet de garantir un gain anticipé ou d'éviter le pire scénario.</p>
     </div>
-  </section>
-
-  <section class="seo" style="display:flex;flex-direction:column;gap:14px">
     <div class="seo-card">
       <h2>Bonus et promotions</h2>
       <p>Le programme de fidélité destiné aux clients fidèles et aux nouveaux clients est assez varié. Il propose des bonus Cosmobet sur vos dépôts, des cadeaux sans condition de dépôt, ainsi qu'un cashback hebdomadaire. Les nouveaux joueurs bénéficient d'emblée de deux récompenses.</p>
@@ -298,7 +295,7 @@ button{font-family:inherit;cursor:pointer}
         </div>
       </sc-for>
     </div>
-    <div style="display:flex;justify-content:center;padding:16px 0 8px">
+    <div style="display:flex;justify-content:center;padding:26px 0 8px">
       <button style="background:#00e1f0;color:#04181b;border:0;border-radius:6px;padding:8px 22px;font-size:14px;font-weight:600" style-hover="background:#7ff3fa">J'en profite</button>
     </div>
   </div>
@@ -321,9 +318,9 @@ button{font-family:inherit;cursor:pointer}
 </main>
 
 <div style="background:#16181c;margin-top:40px">
-  <div style="max-width:938px;margin:0 auto;padding:30px 16px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px 28px">
+  <div class="pay-strip" style="max-width:938px;margin:0 auto;padding:30px 16px;display:flex;flex-wrap:nowrap;align-items:center;justify-content:space-between;gap:12px">
     <sc-for list="{{ payments }}" as="x" hint-placeholder-count="11">
-      <span style="font-weight:800;font-size:18px;color:{{ x.c }};font-style:italic;letter-spacing:-.3px;white-space:nowrap">{{ x.n }}</span>
+      <span style="font-weight:800;font-size:14px;color:{{ x.c }};font-style:italic;letter-spacing:-.3px;white-space:nowrap">{{ x.n }}</span>
     </sc-for>
   </div>
 </div>
