@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 160" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <ellipse cx="112" cy="146" rx="86" ry="8" fill="#000" opacity=".35"/>
+  <!-- phone -->
+  <rect x="132" y="22" width="56" height="104" rx="10" fill="#1a1f36" stroke="#04181b" stroke-width="3"/>
+  <rect x="138" y="32" width="44" height="80" rx="4" fill="#0e2b2f"/>
+  <circle cx="160" cy="62" r="13" fill="#00e1f0" stroke="#04181b" stroke-width="3"/>
+  <path d="M154 62l4 4 8-8" stroke="#04181b" stroke-width="3"/>
+  <rect x="146" y="84" width="28" height="6" rx="3" fill="#7ff3fa"/>
+  <rect x="150" y="95" width="20" height="5" rx="2.5" fill="#2a4a50"/>
+  <path d="M196 48c6 7 6 21 0 28M204 42c9 11 9 29 0 40" stroke="#00e1f0" stroke-width="3"/>
+  <!-- card -->
+  <g transform="rotate(-12 70 80)">
+    <rect x="18" y="48" width="104" height="66" rx="9" fill="#e3174f" stroke="#04181b" stroke-width="3"/>
+    <rect x="18" y="62" width="104" height="12" fill="#04181b" opacity=".55"/>
+    <rect x="30" y="82" width="18" height="13" rx="3" fill="#f5c400" stroke="#04181b" stroke-width="2"/>
+    <path d="M58 102h14M78 102h14M98 102h12" stroke="#fff" stroke-width="3" opacity=".85"/>
+    <circle cx="100" cy="86" r="7" fill="#ff8a00" opacity=".95"/>
+    <circle cx="110" cy="86" r="7" fill="#f5c400" opacity=".85"/>
+  </g>
+  <!-- coins -->
+  <circle cx="58" cy="128" r="15" fill="#f7931a" stroke="#04181b" stroke-width="3"/>
+  <path d="M54 120v16M54 120h6a4 4 0 0 1 0 8h-6M54 128h7a4 4 0 0 1 0 8h-7M57 117v3M57 136v3" stroke="#fff" stroke-width="2.4"/>
+  <circle cx="92" cy="134" r="11" fill="#627eea" stroke="#04181b" stroke-width="3"/>
+  <path d="M92 126l-5 8 5 3 5-3zM87 135.5l5 5 5-5" stroke="#fff" stroke-width="1.8"/>
+  <path d="M30 22l2 5 5 2-5 2-2 5-2-5-5-2 5-2zM118 12l1.5 3.5 3.5 1.5-3.5 1.5L118 22l-1.5-3.5L113 17l3.5-1.5z" fill="#f5c400"/>
+</svg>

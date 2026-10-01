@@ -61,6 +61,9 @@ html{scroll-behavior:smooth}
 .seo-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
 .seo-btns a{background:#24272c;color:#fff;border-radius:6px;padding:9px 18px;font-size:13px;font-weight:600}
 .seo-btns a:hover{background:#00e1f0;color:#04181b}
+.pay-banner{flex:1;min-height:170px;margin-top:6px;display:flex;align-items:center;gap:14px;padding:16px;border-radius:8px;border:1px solid #1f3a3d;background:radial-gradient(circle at 25% 40%,#123d45,#0e2b2f 45%,#16181c 100%);color:inherit}
+@media (max-width:600px){.pay-banner{gap:10px;padding:14px 12px}.pay-banner-title{font-size:15px!important}}
+.pay-banner:hover{border-color:#00e1f0;color:inherit}
 .cf-label{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:500;color:#cfd3d8}
 .cf-input{background:#0f1012;border:1px solid #2a2d32;border-radius:6px;padding:10px 12px;color:#fff;font:inherit;font-size:14px;outline:none}
 .cf-input:focus{border-color:#00e1f0;box-shadow:0 0 0 2px rgba(0,225,240,.2)}
@@ -350,10 +353,18 @@ html{scroll-behavior:smooth}
         <p>Pour gagner du temps, il est recommandé de vérifier immédiatement votre adresse e-mail et votre numéro de mobile, car la vérification ne pourra pas être finalisée sans cette étape.</p>
         <p>Avant de pouvoir retirer des fonds, les clients de CosmoBet doivent vérifier leur identité. Il est possible de télécharger manuellement des copies numérisées ou des photos de leurs documents, ou d'utiliser d'autres méthodes de vérification.</p>
       </div>
-      <div class="seo-sub">
+      <div class="seo-sub" style="display:flex;flex-direction:column">
         <h3 id="paiements">Moyens de paiement, dépôts et retraits</h3>
         <p>Pour effectuer des transactions avec le casino en ligne CosmoBet, vous devez disposer d'une carte Visa ou MasterCard. Celle-ci doit être au nom du client de l'établissement. Tout paiement effectué à partir des coordonnées bancaires d'une autre personne sera refusé immédiatement ou ultérieurement, après vérification. Il est possible d'effectuer un dépôt via Google Pay ou Apple Pay.</p>
         <p>Dans la plupart des cas, l'argent est crédité presque instantanément dans Cosmobet. Veuillez noter que certaines banques fixent des limites pour les virements vers les casinos en ligne.</p>
+        <a href="#" class="pay-banner">
+          <img src="uploads/promos/payments.svg" alt="" style="width:150px;max-width:45%;height:auto;flex:none">
+          <div style="min-width:0">
+            <div class="pay-banner-title" style="font-weight:900;font-style:italic;font-size:19px;line-height:1.1;text-transform:uppercase;color:#fff">Dépôts instantanés</div>
+            <div style="font-size:12px;color:#cfd3d8;margin:6px 0 12px;line-height:1.45">Cartes, portefeuilles électroniques et cryptomonnaies</div>
+            <span style="display:inline-block;background:#00e1f0;color:#04181b;border-radius:6px;padding:7px 16px;font-size:13px;font-weight:600">Déposer</span>
+          </div>
+        </a>
       </div>
     </div>
   </section>
